@@ -233,7 +233,7 @@ public class Util {
         return (value.equals("")||value.equals("null")||value.isEmpty()||value==null)?"":value;
     }
     public static boolean viewNullValueChecker(EditText v){
-        return (v.getText().toString().equals("")?true:false);
+        return (v.getText().toString().trim().equals("")?true:false);
     }
 
     public static void setImage(Context context,ImageView imageView,String url){
