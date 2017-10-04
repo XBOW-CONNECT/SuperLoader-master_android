@@ -156,7 +156,7 @@ public class PostDataParserObjectRequest {
     }
     //--------------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService
-    public PostDataParserObjectRequest(final Context context, String url, final String oAuthCode, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
+    public PostDataParserObjectRequest(final Context context, String url, final Map<String,String> headers, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             listner.onPostObjectResponse(null);
@@ -200,10 +200,6 @@ public class PostDataParserObjectRequest {
             }
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
-                if (oAuthCode != null) {
-                    headers.put("JWTTOKEN", oAuthCode);
-                }
                 return headers;
             }
         };
