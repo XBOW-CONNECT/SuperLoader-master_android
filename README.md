@@ -23,7 +23,7 @@ AND
 
 ```sh
 dependencies {
-    compile 'com.github.SandipLayek27:SuperLoader-master_android:1.2'
+    compile 'com.github.SandipLayek27:SuperLoader-master_android:1.9'
 }
 ```
 
@@ -52,9 +52,9 @@ dependencies {
 22. Image Fetch.
 23. Font Style changer (Custom TextView and EditText).
 24. Font-Aawesome support.
-24. Save Image after capturing photo.
-25. Single marshmallow permission checker.
-26. SharedPreference.
+25. Save Image after capturing photo.
+26. Single marshmallow permission checker.
+27. SharedPreference.
 
 # ★ Uses of above features
 * 1. JSONObject request (Parameterized) with or without header passing.
@@ -326,5 +326,12 @@ Util.SaveIamge(Context context,Bitmap finalBitmap,String folder_name,String file
              } 
           }
     });
+```
+
+* 27. Shared Preference
+```sh
+    SharedHelper.savePreference(ActivityName.this,"SHAREd PREFERENCE NAME","KEY",value);
+    SharedHelper.fetchPreference(ActivityName.this,"SHAREd PREFERENCE NAME","KEY");
+    SharedHelper.removePreference(ActivityName.this,"SHAREd PREFERENCE NAME","KEY");
 ```
 
