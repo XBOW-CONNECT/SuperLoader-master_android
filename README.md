@@ -28,7 +28,7 @@ dependencies {
 ```
 
 # ★ Features are
-1. JSONObject request (Parameterized) with or without header passing.   [GET Method/POST Method]
+1. JSONObject request (Parameterized) with or without header passing.   [GET Method/POST Method] [Multiple header passing]
 2. JSONArray request (Parameterized) with or without header passing.    [GET Method/POST Method]
 3. JSONString request (Parameterized) with or without header passing.   [GET Method/POST Method]
 4. Checking Internet connection.
@@ -69,6 +69,34 @@ Method Calling:-
 Method Declaration:-                                    //Create a new method 
  public void check_login(HashMap<String,String>hashMap, String url){
         new PostDataParserObjectRequest(ActivityName.this, url, hashMap, true,PostDataParserObjectRequest.OnPostObjectResponseListner()         {
+            @Override
+            public void onPostObjectResponse(JSONObject response) {     
+                try {
+                    //testing case
+                    succ = response.getString("responseCode");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+    
+❆ 1.1A JSONObject request with muliple header params token.   [POST Method]
+Method Calling:-
+ String url="http://...................";               //You can add here your webservice link
+ HashMap<String,String>hashMap=new HashMap<>();         //Create a hashMap and put values which is required     
+ hashMap.put("", phone);                                //Enter KEY and value
+ hashMap.put("", password);                                //Enter KEY and value
+  
+ HashMap<String,String>headerHashMap=new HashMap<>();         //Create a headerHashMap and put values which is required     
+ headerHashMap.put("", token1);                                //Enter KEY and value
+ headerHashMap.put("", token2);                                //Enter KEY and value
+ 
+ check_login(hashMap,url)
+
+Method Declaration:-                                    //Create a new method 
+ public void check_login(HashMap<String,String>headerHashMap,HashMap<String,String>hashMap, String url){
+        new PostDataParserObjectRequest(ActivityName.this, url, headerHashMap, hashMap, true, PostDataParserObjectRequest.OnPostObjectResponseListner(){
             @Override
             public void onPostObjectResponse(JSONObject response) {     
                 try {
