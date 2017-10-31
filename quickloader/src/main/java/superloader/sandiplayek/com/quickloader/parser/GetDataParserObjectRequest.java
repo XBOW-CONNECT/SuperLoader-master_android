@@ -145,7 +145,7 @@ public class GetDataParserObjectRequest {
 
     //................................................................................................................
     //................................................................................................................
-    public GetDataParserObjectRequest(final Context context, String url, String oAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
+    public GetDataParserObjectRequest(final Context context, String url, final String oAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
@@ -189,6 +189,7 @@ public class GetDataParserObjectRequest {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
+                headers.put("JWTTOKEN",oAuthCode);
                 /*if (AppData.sToken != null) {
                     headers.put("Authorization", "bearer "+AppData.sToken);
                 }*/
