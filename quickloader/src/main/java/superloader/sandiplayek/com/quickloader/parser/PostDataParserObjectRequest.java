@@ -21,6 +21,7 @@ import java.util.Map;
 import superloader.sandiplayek.com.quickloader.R;
 import superloader.sandiplayek.com.quickloader.appcontroller.AppController;
 import superloader.sandiplayek.com.quickloader.customprogress.MyCustomProgressDialog;
+import superloader.sandiplayek.com.quickloader.customprogress.MyCustomProgressDialogChanges;
 import superloader.sandiplayek.com.quickloader.util.Util;
 
 
@@ -219,6 +220,66 @@ public class PostDataParserObjectRequest {
         }
         if (flag) {
             dialog = MyCustomProgressDialog.ctor(context);
+            dialog.setCancelable(false);
+            dialog.setMessage("Please wait...");
+            showpDialog();
+        }
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    //Util util = new Util();
+                    JSONObject jobj = new JSONObject(response);
+                    listner.onPostObjectResponse(jobj);
+                } catch (Exception e) {
+                    listner.onPostObjectResponse(null);
+                    e.printStackTrace();
+                }
+                if (flag)
+                    hidepDialog();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (flag)
+                    hidepDialog();
+                Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
+                listner.onPostObjectResponse(null);
+                VolleyLog.d("Error: " + error.getMessage());
+                //TastyToast.makeText(context, "Network error.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return params;
+            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String,String>header=new HashMap<>();
+                header.put("JWTTOKEN",headers);
+                return header;
+            }
+        };
+        postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT ));
+        //AppController.getInstance().addToRequestQueue(postRequest);
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(postRequest);
+    }
+
+    //Header Request Auth Hit WebService custom Loader
+    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final String headers, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
+        if (!Util.isConnected(context)) {
+            Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
+            listner.onPostObjectResponse(null);
+            return;
+        }
+        if (flag) {
+            if(customLoader.equals("1")){
+                dialog = MyCustomProgressDialogChanges.ctor(context);
+            }else{
+                dialog = MyCustomProgressDialog.ctor(context);
+            }
             dialog.setCancelable(false);
             dialog.setMessage("Please wait...");
             showpDialog();
