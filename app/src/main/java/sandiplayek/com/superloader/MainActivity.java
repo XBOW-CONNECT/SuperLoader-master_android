@@ -19,7 +19,6 @@ import java.util.HashMap;
 import superloader.sandiplayek.com.quickloader.MyView;
 import superloader.sandiplayek.com.quickloader.customprogress.MyCustomProgressDialog;
 import superloader.sandiplayek.com.quickloader.parser.PostDataParserObjectRequest;
-import superloader.sandiplayek.com.quickloader.permissions.SinglePremissionGranter;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     String url="";  //Enter Here Your Login URL
@@ -32,20 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findIds();
-        check_permission();
-    }
 
-    private void check_permission() {
-        new SinglePremissionGranter(MainActivity.this, 2, new SinglePremissionGranter.GetPermissionResult() {
-            @Override
-            public void getPermissionMessage(String permissionStatus) {
-                if(permissionStatus.equals("OK")){
-                    Toast.makeText(MainActivity.this, ""+permissionStatus, Toast.LENGTH_SHORT).show();
-                }else{
-                    check_permission();
-                }
-            }
-        });
     }
 
     private void findIds() {
