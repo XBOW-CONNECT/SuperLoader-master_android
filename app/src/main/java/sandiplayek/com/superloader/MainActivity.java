@@ -46,7 +46,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         HashMap<String,String>hashMap=new HashMap<>();
         hashMap.put("", phone);     //Enter KEY value for phone and pass
         hashMap.put("", pass);
-        new PostDataParserObjectRequest(MainActivity.this, url, hashMap, true, new PostDataParserObjectRequest.OnPostObjectResponseListner() {
+        new PostDataParserObjectRequest("1",MainActivity.this, url, hashMap, true, new PostDataParserObjectRequest.OnPostObjectResponseListner() {
+            @Override
+            public void onPostObjectResponse(JSONObject response) {
+                try {
+                    succ = response.getString("responseCode");
+                    msg = response.getString("message");
+                    if (succ.equals("1")) {
+                        Toast.makeText(MainActivity.this, "" + msg, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "" + msg, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void check_login_1(){
+        HashMap<String,String>hashMap=new HashMap<>();
+        hashMap.put("", phone);     //Enter KEY value for phone and pass
+        hashMap.put("", pass);
+
+        HashMap<String,String>hashMapHeader=new HashMap<>();
+        new PostDataParserObjectRequest("1",MainActivity.this, url, hashMapHeader, hashMap, true, new PostDataParserObjectRequest.OnPostObjectResponseListner() {
             @Override
             public void onPostObjectResponse(JSONObject response) {
                 try {
@@ -74,8 +98,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return;
             }
             check_login();
-            //CustomProgressDialog customProgressDialog;
-            //customProgressDialog=new CustomProgressDialog(MainActivity.this,true,"3");
         }
     }
 }
