@@ -54,7 +54,7 @@ dependencies {
 23. Font Style changer (Custom TextView and EditText).
 24. Font-Aawesome support.
 25. Save Image after capturing photo.
-26. Single marshmallow permission checker.
+26. Custom Loader.
 27. SharedPreference.
 
 # ★ Uses of above features
@@ -157,7 +157,72 @@ Method Declaration:-
                 
             }
         });
+    }
+    
+❆ 1.5 With Custom Loader.
+Please Reminded This Loader Icons.
+1. BallBeat                     2. BallClipRotate                3. BallClipRoatetMultiple
+4. BallClipRotationPlus         5. BallGridBeat                  6. BallGridPlus
+7. BallPlus                     8. BallPlusRise                  9. BallPlusSync
+10. BallRotate                  11. BallScale                    12. BallScaleMultiple
+13. BallScaleRipple             14. BallScaleRippleMultiple      15. BallSpinFadeLoader
+16. BallTrainglePath            17. Zigzag                       18. ZigzagDeflect
+19. CubeTransition              20. LineScale                    21. LineScaleParty
+22. LineScalePlusOut            23. LineScalePlusOutRapid        24. LineSpinFadeLoader
+25. pacman                      26. SemiCircleSpin               27. SquareSpin
+28. TriangleSkewSpin
+*************************************************************
+One Of the Example for using custom loader without header.../
+*************************************************************
+public void check_login(){
+        HashMap<String,String>hashMap=new HashMap<>();
+        hashMap.put("", phone);     //Enter KEY value for phone and pass
+        hashMap.put("", pass);
+        new PostDataParserObjectRequest("1",MainActivity.this, url, hashMap, true, new PostDataParserObjectRequest.OnPostObjectResponseListner() {
+            @Override
+            public void onPostObjectResponse(JSONObject response) {
+                try {
+                    succ = response.getString("responseCode");
+                    msg = response.getString("message");
+                    if (succ.equals("1")) {
+                        Toast.makeText(MainActivity.this, "" + msg, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "" + msg, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+    
+*************************************************************    
+One Of the Example for using custom loader with header......\
+*************************************************************
+public void check_login(){
+        HashMap<String,String>hashMap=new HashMap<>();
+        hashMap.put("", phone);     //Enter KEY value for phone and pass
+        hashMap.put("", pass);
+
+        HashMap<String,String>hashMapHeader=new HashMap<>();
+        new PostDataParserObjectRequest("1",MainActivity.this, url, hashMapHeader, hashMap, true, new PostDataParserObjectRequest.OnPostObjectResponseListner() {
+            @Override
+            public void onPostObjectResponse(JSONObject response) {
+                try {
+                    succ = response.getString("responseCode");
+                    msg = response.getString("message");
+                    if (succ.equals("1")) {
+                        Toast.makeText(MainActivity.this, "" + msg, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "" + msg, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }    
+
 ```
 //2 & 3. Same case for JSONArray Request and JSONString Request. just change:-
 ```sh
@@ -345,16 +410,14 @@ We normally write.
 ```sh
 Util.SaveIamge(Context context,Bitmap finalBitmap,String folder_name,String file_name);
 ```
-* 26. Single permission granter
+* 26. Custom Loader
 ```sh
-    new SinglePremissionGranter(MainActivity.this, 99, new SinglePremissionGranter.GetPermissionResult() {
-        @Override
-        public void getPermissionMessage(String permissionStatus) {
-            if(permissionStatus.equals("OK")){
-                   
-             } 
-          }
-    });
+    CustomProgressDialog customProgressDialog;
+    *For Start Progress Dialog
+    customProgressDialog=new CustomProgressDialog(MainActivity.this,true,"3");
+    
+    *For Stop Progress Dialog
+    customProgressDialog=new CustomProgressDialog(MainActivity.this,flase,"3");
 ```
 
 * 27. Shared Preference
