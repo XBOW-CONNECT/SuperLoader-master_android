@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import superloader.sandiplayek.com.quickloader.MyView;
+import superloader.sandiplayek.com.quickloader.customprogress.CustomProgressDialog;
 import superloader.sandiplayek.com.quickloader.customprogress.MyCustomProgressDialog;
 import superloader.sandiplayek.com.quickloader.parser.PostDataParserObjectRequest;
 
@@ -73,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return;
             }
             check_login();
+            //CustomProgressDialog customProgressDialog;
+            //customProgressDialog=new CustomProgressDialog(MainActivity.this,true,"3");
         }
     }
 }

@@ -20,6 +20,7 @@ import java.util.Map;
 
 import superloader.sandiplayek.com.quickloader.R;
 import superloader.sandiplayek.com.quickloader.appcontroller.AppController;
+import superloader.sandiplayek.com.quickloader.customprogress.CallingProgressDialog;
 import superloader.sandiplayek.com.quickloader.customprogress.MyCustomProgressDialog;
 import superloader.sandiplayek.com.quickloader.customprogress.MyCustomProgressDialogChanges;
 import superloader.sandiplayek.com.quickloader.util.Util;
@@ -268,18 +269,20 @@ public class PostDataParserObjectRequest {
     }
     //-------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService custom Loader
-    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final String headers, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
+    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final Map<String,String> headersHashMap, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             listner.onPostObjectResponse(null);
             return;
         }
         if (flag) {
-            if(customLoader.equals("1")){
+            dialog=CallingProgressDialog.chooseDialog(context,customLoader);
+            /*if(customLoader.equals("1")){
                 dialog = MyCustomProgressDialogChanges.ctor(context);
-            }else{
-                dialog = MyCustomProgressDialog.ctor(context);
             }
+            else{
+                dialog = MyCustomProgressDialog.ctor(context);
+            }*/
             dialog.setCancelable(false);
             dialog.setMessage("Please wait...");
             showpDialog();
@@ -316,9 +319,7 @@ public class PostDataParserObjectRequest {
             }
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String,String>header=new HashMap<>();
-                header.put("JWTTOKEN",headers);
-                return header;
+                return headersHashMap;
             }
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT ));
@@ -336,11 +337,7 @@ public class PostDataParserObjectRequest {
             return;
         }
         if (flag) {
-            if(customLoader.equals("1")){
-                dialog = MyCustomProgressDialogChanges.ctor(context);
-            }else{
-                dialog = MyCustomProgressDialog.ctor(context);
-            }
+            dialog=CallingProgressDialog.chooseDialog(context,customLoader);
             dialog.setCancelable(false);
             dialog.setMessage("Please wait...");
             showpDialog();

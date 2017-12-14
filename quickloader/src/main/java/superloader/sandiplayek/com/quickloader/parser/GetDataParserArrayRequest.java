@@ -23,6 +23,7 @@ import java.util.Map;
 
 import superloader.sandiplayek.com.quickloader.R;
 import superloader.sandiplayek.com.quickloader.appcontroller.AppController;
+import superloader.sandiplayek.com.quickloader.customprogress.CallingProgressDialog;
 import superloader.sandiplayek.com.quickloader.customprogress.MyCustomProgressDialog;
 import superloader.sandiplayek.com.quickloader.util.Util;
 
@@ -247,6 +248,98 @@ public class GetDataParserArrayRequest {
         }
         if (flag) {
             dialog = MyCustomProgressDialog.ctor(context);
+            dialog.setCancelable(false);
+            dialog.setMessage("Please wait...");
+            showpDialog();
+        }
+
+        final JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                try {
+                    listner.onGetArrayResponse(jsonArray);
+                } catch (Exception e) {
+                    listner.onGetArrayResponse(null);
+                    e.printStackTrace();
+                }
+                if (flag)
+                    hidepDialog();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                if (flag)
+                    hidepDialog();
+                Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
+                listner.onGetArrayResponse(null);
+                VolleyLog.d("Error: " + volleyError.getMessage());
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return hashMapAuthCode;
+            }
+        };
+        jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(jsonArrayRequest);
+    }
+
+    //---------------------------------------------------------------------------------
+    //Normal Get API ARRAY Request
+    public GetDataParserArrayRequest(final String customLoader,final Context context, String url, final boolean flag, final OnGetObjectResponseListner listner) {
+        if (!Util.isConnected(context)) {
+            Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
+            //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+            listner.onGetArrayResponse(null);
+            return;
+        }
+        if (flag) {
+            dialog= CallingProgressDialog.chooseDialog(context,customLoader);
+            dialog.setCancelable(false);
+            dialog.setMessage("Please wait...");
+            showpDialog();
+        }
+
+        final JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                try {
+                    listner.onGetArrayResponse(jsonArray);
+                } catch (Exception e) {
+                    listner.onGetArrayResponse(null);
+                    e.printStackTrace();
+                }
+                if (flag)
+                    hidepDialog();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                if (flag)
+                    hidepDialog();
+                Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
+                listner.onGetArrayResponse(null);
+                VolleyLog.d("Error: " + volleyError.getMessage());
+            }
+        });
+        jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(jsonArrayRequest);
+    }
+
+    //Get API ARRAY Request with header
+    public GetDataParserArrayRequest(final String customLoader,final Context context, String url, final HashMap<String,String> hashMapAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
+        if (!Util.isConnected(context)) {
+            Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
+            //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+            listner.onGetArrayResponse(null);
+            return;
+        }
+        if (flag) {
+            dialog= CallingProgressDialog.chooseDialog(context,customLoader);
             dialog.setCancelable(false);
             dialog.setMessage("Please wait...");
             showpDialog();
