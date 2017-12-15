@@ -277,12 +277,6 @@ public class PostDataParserObjectRequest {
         }
         if (flag) {
             dialog=CallingProgressDialog.chooseDialog(context,customLoader);
-            /*if(customLoader.equals("1")){
-                dialog = MyCustomProgressDialogChanges.ctor(context);
-            }
-            else{
-                dialog = MyCustomProgressDialog.ctor(context);
-            }*/
             dialog.setCancelable(false);
             dialog.setMessage("Please wait...");
             showpDialog();

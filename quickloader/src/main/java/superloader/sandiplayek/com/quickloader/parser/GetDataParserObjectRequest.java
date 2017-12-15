@@ -307,7 +307,6 @@ public class GetDataParserObjectRequest {
         }
         if (flag) {
             dialog= CallingProgressDialog.chooseDialog(context,customLoader);
-            dialog = MyCustomProgressDialog.ctor(context);
             dialog.setCancelable(false);
             dialog.setMessage("Please wait...");
             showpDialog();
