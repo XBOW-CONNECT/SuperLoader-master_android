@@ -43,7 +43,7 @@ public class GetDataParserArrayRequest {
         if (dialog.isShowing())
             dialog.dismiss();
     }
-    //---------------------------------------------------------------------------------
+    //1 ---------------------------------------------------------------------------------
     //Normal Get API ARRAY Request
     public GetDataParserArrayRequest(final Context context, String url, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
@@ -87,7 +87,7 @@ public class GetDataParserArrayRequest {
         queue.add(jsonArrayRequest);
     }
 
-    //---------------------------------------------------------------------------------
+    //2 ---------------------------------------------------------------------------------
     //Normal Get API ARRAY Request with view
     public GetDataParserArrayRequest(final Context context, String url, final boolean flag, final View view, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
@@ -131,7 +131,7 @@ public class GetDataParserArrayRequest {
         queue.add(jsonArrayRequest);
     }
 
-    //---------------------------------------------------------------------------------
+    //3 ---------------------------------------------------------------------------------
     //Normal Get API ARRAY Request with Oth Code
     public GetDataParserArrayRequest(final Context context, String url, final String oAuthCode, final boolean flag, final View view, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
@@ -184,7 +184,7 @@ public class GetDataParserArrayRequest {
         queue.add(jsonArrayRequest);
     }
 
-    //---------------------------------------------------------------------------------
+    //4 ---------------------------------------------------------------------------------
     //Get API ARRAY Request with header
     public GetDataParserArrayRequest(final Context context, String url, final String oAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
@@ -237,7 +237,7 @@ public class GetDataParserArrayRequest {
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(jsonArrayRequest);
     }
-
+    //5 ---------------------------------------------------------------------------------
     //Get API ARRAY Request with header
     public GetDataParserArrayRequest(final Context context, String url, final HashMap<String,String> hashMapAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
@@ -286,7 +286,7 @@ public class GetDataParserArrayRequest {
         queue.add(jsonArrayRequest);
     }
 
-    //---------------------------------------------------------------------------------
+    //6 ---------------------------------------------------------------------------------
     //Normal Get API ARRAY Request
     public GetDataParserArrayRequest(final String customLoader,final Context context, String url, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
@@ -329,7 +329,7 @@ public class GetDataParserArrayRequest {
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(jsonArrayRequest);
     }
-
+    //7 ---------------------------------------------------------------------------------
     //Get API ARRAY Request with header
     public GetDataParserArrayRequest(final String customLoader,final Context context, String url, final HashMap<String,String> hashMapAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {

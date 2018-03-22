@@ -42,7 +42,7 @@ public class GetDataParserStringRequest {
             dialog.dismiss();
     }
 
-    //--------------------------------------------------------------------------------------------------------------------
+    //1 --------------------------------------------------------------------------------------------------------------------
     //Normal WebService Hit
     public GetDataParserStringRequest(final Context context, String url, final boolean flag, final OnPostStringResponseListner listner) {
         if (!Util.isConnected(context)) {
@@ -88,7 +88,7 @@ public class GetDataParserStringRequest {
         queue.add(postRequest);
     }
 
-    //--------------------------------------------------------------------------------------------------------------------
+    //2 --------------------------------------------------------------------------------------------------------------------
     //Normal WebService Hit with view that means Only View Refresh when Network Error
     public GetDataParserStringRequest(final Context context, String url, final boolean flag, final View view, final OnPostStringResponseListner listner) {
         if (!Util.isConnected(context)) {
@@ -132,7 +132,7 @@ public class GetDataParserStringRequest {
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(postRequest);
     }
-    //----------------------------------------------------------------------------------------------------------------
+    //3 ----------------------------------------------------------------------------------------------------------------
     //Normal WebService Hit with view that means Only View Refresh when Network Error
     public GetDataParserStringRequest(final Context context, String url, final boolean flag, final View view,final String oAuthCode, final OnPostStringResponseListner listner) {
         if (!Util.isConnected(context)) {
@@ -183,7 +183,7 @@ public class GetDataParserStringRequest {
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(postRequest);
     }
-    //--------------------------------------------------------------------------------------------------------------------
+    //4 --------------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService
     public GetDataParserStringRequest(final Context context, String url, final boolean flag, final String oAuthCode, final OnPostStringResponseListner listner) {
         if (!Util.isConnected(context)) {
@@ -235,7 +235,7 @@ public class GetDataParserStringRequest {
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(postRequest);
     }
-    //------------------------------------------------------------------------------------------------------------
+    //5 ------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService
     public GetDataParserStringRequest(final Context context, String url, final boolean flag, final HashMap<String,String> HashMapOAuthCode, final OnPostStringResponseListner listner) {
         if (!Util.isConnected(context)) {
@@ -284,7 +284,7 @@ public class GetDataParserStringRequest {
         queue.add(postRequest);
     }
 
-    //--------------------------------------------------------------------------------------------------------------------
+    //6 --------------------------------------------------------------------------------------------------------------------
     //Normal WebService Hit
     public GetDataParserStringRequest(final String customLoader,final Context context, String url, final boolean flag, final OnPostStringResponseListner listner) {
         if (!Util.isConnected(context)) {
@@ -329,7 +329,7 @@ public class GetDataParserStringRequest {
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(postRequest);
     }
-    //------------------------------------------------------------------------------------------------------------
+    //7 ------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService
     public GetDataParserStringRequest(final String customLoader,final Context context, String url, final boolean flag, final HashMap<String,String> HashMapOAuthCode, final OnPostStringResponseListner listner) {
         if (!Util.isConnected(context)) {

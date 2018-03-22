@@ -20,16 +20,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import superloader.sandiplayek.com.quickloader.R;
-import superloader.sandiplayek.com.quickloader.appcontroller.AppController;
 import superloader.sandiplayek.com.quickloader.customprogress.CallingProgressDialog;
 import superloader.sandiplayek.com.quickloader.customprogress.MyCustomProgressDialog;
-import superloader.sandiplayek.com.quickloader.customprogress.MyCustomProgressDialogChanges;
 import superloader.sandiplayek.com.quickloader.util.Util;
 
 /**
  * Created by root on 16/9/16.
  */
-public class GetDataParserObjectRequest {
+public class RawDataParserObjectRequest {
     AlertDialog dialog;
 
     private void showpDialog() {
@@ -42,7 +40,7 @@ public class GetDataParserObjectRequest {
             dialog.dismiss();
     }
     //1 ................................................................................................................
-    public GetDataParserObjectRequest(final Context context, String url, final boolean flag, final OnGetObjectResponseListner listner) {
+    public RawDataParserObjectRequest(final Context context, String url, HashMap<String,String>hashMap, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
@@ -55,7 +53,7 @@ public class GetDataParserObjectRequest {
             dialog.setMessage("Please wait...");
             showpDialog();
         }
-        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -97,7 +95,7 @@ public class GetDataParserObjectRequest {
         queue.add(jsonObjReq);
     }
     //2 ................................................................................................................
-    public GetDataParserObjectRequest(final Context context, String url, final boolean flag, final View view, final OnGetObjectResponseListner listner) {
+    public RawDataParserObjectRequest(final Context context, String url,HashMap<String,String>hashMap, final boolean flag, final View view, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),view);
             //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
@@ -110,7 +108,7 @@ public class GetDataParserObjectRequest {
             dialog.setMessage("Please wait...");
             showpDialog();
         }
-        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -143,7 +141,7 @@ public class GetDataParserObjectRequest {
         queue.add(jsonObjReq);
     }
     //3 ...............................................................................................................
-    public GetDataParserObjectRequest(final Context context, String url, final boolean flag,final View view,final String oAuthCode, final OnGetObjectResponseListner listner) {
+    public RawDataParserObjectRequest(final Context context, String url,HashMap<String,String>hashMap, final boolean flag, final View view, final String oAuthCode, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),view);
             //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
@@ -156,7 +154,7 @@ public class GetDataParserObjectRequest {
             dialog.setMessage("Please wait...");
             showpDialog();
         }
-        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -193,7 +191,7 @@ public class GetDataParserObjectRequest {
         queue.add(jsonObjReq);
     }
     //4 ................................................................................................................
-    public GetDataParserObjectRequest(final Context context, String url, final String oAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
+    public RawDataParserObjectRequest(final Context context, String url,HashMap<String,String>hashMap, final String oAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
@@ -206,7 +204,7 @@ public class GetDataParserObjectRequest {
             dialog.setMessage("Please wait...");
             showpDialog();
         }
-        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -245,7 +243,7 @@ public class GetDataParserObjectRequest {
         queue.add(jsonObjReq);
     }
     //5 ................................................................................................................
-    public GetDataParserObjectRequest(final Context context, String url, final HashMap<String,String>hashMapAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
+    public RawDataParserObjectRequest(final Context context, String url,HashMap<String,String>hashMap, final HashMap<String,String>hashMapAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
@@ -258,7 +256,7 @@ public class GetDataParserObjectRequest {
             dialog.setMessage("Please wait...");
             showpDialog();
         }
-        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -296,7 +294,7 @@ public class GetDataParserObjectRequest {
     }
     //6 ................................................................................................................
     //Simple get data parser with Custom loader
-    public GetDataParserObjectRequest(final String customLoader,final Context context, String url, final boolean flag, final OnGetObjectResponseListner listner) {
+    public RawDataParserObjectRequest(final String customLoader, final Context context, String url,HashMap<String,String>hashMap, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
@@ -309,7 +307,7 @@ public class GetDataParserObjectRequest {
             dialog.setMessage("Please wait...");
             showpDialog();
         }
-        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -352,7 +350,7 @@ public class GetDataParserObjectRequest {
     }
 
     //7 ................................................................................................................
-    public GetDataParserObjectRequest(final String customLoader,final Context context, String url, final HashMap<String,String>hashMapAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
+    public RawDataParserObjectRequest(final String customLoader, final Context context, String url,HashMap<String,String>hashMap, final HashMap<String,String>hashMapAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
@@ -365,7 +363,7 @@ public class GetDataParserObjectRequest {
             dialog.setMessage("Please wait...");
             showpDialog();
         }
-        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
