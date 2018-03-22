@@ -53,7 +53,7 @@ public class RawDataParserObjectRequest {
             dialog.setMessage("Please wait...");
             showpDialog();
         }
-        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -108,7 +108,7 @@ public class RawDataParserObjectRequest {
             dialog.setMessage("Please wait...");
             showpDialog();
         }
-        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -154,7 +154,7 @@ public class RawDataParserObjectRequest {
             dialog.setMessage("Please wait...");
             showpDialog();
         }
-        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -204,7 +204,7 @@ public class RawDataParserObjectRequest {
             dialog.setMessage("Please wait...");
             showpDialog();
         }
-        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -256,7 +256,7 @@ public class RawDataParserObjectRequest {
             dialog.setMessage("Please wait...");
             showpDialog();
         }
-        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -307,7 +307,7 @@ public class RawDataParserObjectRequest {
             dialog.setMessage("Please wait...");
             showpDialog();
         }
-        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -363,7 +363,7 @@ public class RawDataParserObjectRequest {
             dialog.setMessage("Please wait...");
             showpDialog();
         }
-        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(hashMap), new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
