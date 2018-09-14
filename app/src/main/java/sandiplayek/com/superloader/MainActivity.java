@@ -20,6 +20,7 @@ import superloader.sandiplayek.com.quickloader.MyView;
 import superloader.sandiplayek.com.quickloader.customprogress.CustomProgressDialog;
 import superloader.sandiplayek.com.quickloader.customprogress.MyCustomProgressDialog;
 import superloader.sandiplayek.com.quickloader.parser.PostDataParserObjectRequest;
+import superloader.sandiplayek.com.quickloader.util.Util;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     String url="";  //Enter Here Your Login URL
@@ -33,6 +34,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findIds();
 
+        if(Util.isConnected(MainActivity.this)){
+            Toast.makeText(this, "YES", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "NO", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void findIds() {

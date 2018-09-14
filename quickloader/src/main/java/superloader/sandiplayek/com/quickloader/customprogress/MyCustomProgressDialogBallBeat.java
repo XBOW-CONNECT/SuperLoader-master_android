@@ -7,7 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
-import com.wang.avi.AVLoadingIndicatorView;
+
 
 import superloader.sandiplayek.com.quickloader.R;
 
