@@ -81,9 +81,11 @@ public class Util {
 
         if(activeNetwork.getType() == ConnectivityManager.TYPE_WIFI){
             return true;
+
         }else if(activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE){
 
             switch(activeNetwork.getSubtype()){
+
                 case TelephonyManager.NETWORK_TYPE_1xRTT:
                     return false; // ~ 50-100 kbps
                 case TelephonyManager.NETWORK_TYPE_CDMA:
@@ -116,8 +118,10 @@ public class Util {
                     return true; // ~ 10+ Mbps
                 // Unknown
                 case TelephonyManager.NETWORK_TYPE_UNKNOWN:
+                    return false;
                 default:
                     return false;
+
             }
         }else if(activeNetwork.getType() == ConnectivityManager.TYPE_ETHERNET){
             return true;
