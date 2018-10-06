@@ -32,6 +32,7 @@ dependencies {
 1. JSONObject request (Parameterized) with or without header passing.   [GET Method/POST Method] [Multiple header passing]
 2. JSONArray request (Parameterized) with or without header passing.    [GET Method/POST Method]
 3. JSONString request (Parameterized) with or without header passing.   [GET Method/POST Method]
+   ★(3.0) JSONObject request (Parameterized) with or without header passing Uncast HashMap. [GET Method/POST Method] [Multiple header passing]
 4. Checking Internet connection.
 5. Validate Email address
 6. Convert String request to Object request.
