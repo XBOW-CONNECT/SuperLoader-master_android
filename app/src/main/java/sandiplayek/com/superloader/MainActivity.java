@@ -1,8 +1,8 @@
 package sandiplayek.com.superloader;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,12 +22,13 @@ import superloader.sandiplayek.com.quickloader.customprogress.MyCustomProgressDi
 import superloader.sandiplayek.com.quickloader.parser.PostDataParserObjectRequest;
 import superloader.sandiplayek.com.quickloader.util.Util;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends Activity implements View.OnClickListener{
     String url="";  //Enter Here Your Login URL
     String pass="",phone="", succ ="",msg="";
     EditText et_ph,et_pass;
     Button btn_chk;
     TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

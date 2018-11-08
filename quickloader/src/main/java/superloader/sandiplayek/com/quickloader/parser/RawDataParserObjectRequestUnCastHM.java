@@ -41,7 +41,6 @@ public class RawDataParserObjectRequestUnCastHM {
     public RawDataParserObjectRequestUnCastHM(final Context context, String url, HashMap hashMap, final boolean flag, final RawDataParserObjectRequestUnCastHM.OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
-            //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
             listner.onGetObjectResponse(null);
             return;
         }
@@ -73,22 +72,9 @@ public class RawDataParserObjectRequestUnCastHM {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
                 listner.onGetObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
-                //TastyToast.makeText(context, "Network error.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-
-
             }
-        }); /*{
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
-                if (AppData.sToken != null) {
-                    headers.put("Authorization", "bearer "+AppData.sToken);
-                }
-                return headers;
-            }
-        };*/
+        });
         jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //AppController.getInstance().addToRequestQueue(jsonObjReq);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(jsonObjReq);
     }
@@ -96,7 +82,6 @@ public class RawDataParserObjectRequestUnCastHM {
     public RawDataParserObjectRequestUnCastHM(final Context context, String url, HashMap hashMap, final boolean flag, final View view, final RawDataParserObjectRequestUnCastHM.OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),view);
-            //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
             listner.onGetObjectResponse(null);
             return;
         }
