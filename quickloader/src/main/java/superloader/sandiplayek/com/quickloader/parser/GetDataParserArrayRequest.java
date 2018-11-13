@@ -48,7 +48,6 @@ public class GetDataParserArrayRequest {
     public GetDataParserArrayRequest(final Context context, String url, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
-            //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
             listner.onGetArrayResponse(null);
             return;
         }
@@ -84,7 +83,6 @@ public class GetDataParserArrayRequest {
             }
         });
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //AppController.getInstance().addToRequestQueue(jsonArrayRequest);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(jsonArrayRequest);
     }
@@ -94,7 +92,6 @@ public class GetDataParserArrayRequest {
     public GetDataParserArrayRequest(final Context context, String url, final boolean flag, final View view, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),view);
-            //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
             listner.onGetArrayResponse(null);
             return;
         }
@@ -128,7 +125,6 @@ public class GetDataParserArrayRequest {
             }
         });
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //AppController.getInstance().addToRequestQueue(jsonArrayRequest);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(jsonArrayRequest);
     }
@@ -138,7 +134,6 @@ public class GetDataParserArrayRequest {
     public GetDataParserArrayRequest(final Context context, String url, final String oAuthCode, final boolean flag, final View view, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),view);
-            //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
             listner.onGetArrayResponse(null);
             return;
         }
@@ -181,7 +176,6 @@ public class GetDataParserArrayRequest {
             }
         };
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //AppController.getInstance().addToRequestQueue(jsonArrayRequest);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(jsonArrayRequest);
     }
@@ -191,7 +185,6 @@ public class GetDataParserArrayRequest {
     public GetDataParserArrayRequest(final Context context, String url, final String oAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
-            //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
             listner.onGetArrayResponse(null);
             return;
         }
@@ -235,7 +228,6 @@ public class GetDataParserArrayRequest {
             }
         };
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //AppController.getInstance().addToRequestQueue(jsonArrayRequest);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(jsonArrayRequest);
     }
@@ -244,7 +236,6 @@ public class GetDataParserArrayRequest {
     public GetDataParserArrayRequest(final Context context, String url, final HashMap<String,String> hashMapAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
-            //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
             listner.onGetArrayResponse(null);
             return;
         }
@@ -283,17 +274,15 @@ public class GetDataParserArrayRequest {
             }
         };
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //AppController.getInstance().addToRequestQueue(jsonArrayRequest);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(jsonArrayRequest);
     }
 
-    //6 ---------------------------------------------------------------------------------
+    //1.1 ---------------------------------------------------------------------------------
     //Normal Get API ARRAY Request
     public GetDataParserArrayRequest(final String customLoader,final Context context, String url, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
-            //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
             listner.onGetArrayResponse(null);
             return;
         }
@@ -327,16 +316,160 @@ public class GetDataParserArrayRequest {
             }
         });
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //AppController.getInstance().addToRequestQueue(jsonArrayRequest);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(jsonArrayRequest);
     }
-    //7 ---------------------------------------------------------------------------------
+
+    //2.2 ---------------------------------------------------------------------------------
+    //Normal Get API ARRAY Request with view
+    public GetDataParserArrayRequest(final String customLoader, final Context context, String url, final boolean flag, final View view, final OnGetObjectResponseListner listner) {
+        if (!Util.isConnected(context)) {
+            Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),view);
+            listner.onGetArrayResponse(null);
+            return;
+        }
+        if (flag) {
+            dialog= CallingProgressDialog.chooseDialog(context,customLoader);
+            dialog.setCancelable(false);
+            dialog.setMessage("Please wait...");
+            showpDialog();
+        }
+
+        final JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                try {
+                    listner.onGetArrayResponse(jsonArray);
+                } catch (Exception e) {
+                    listner.onGetArrayResponse(null);
+                    e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                if (flag)
+                    hidepDialog();
+                Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
+                listner.onGetArrayResponse(null);
+                VolleyLog.d("Error: " + volleyError.getMessage());
+            }
+        });
+        jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(jsonArrayRequest);
+    }
+
+    //3.3 ---------------------------------------------------------------------------------
+    //Normal Get API ARRAY Request with Oth Code
+    public GetDataParserArrayRequest(final String customLoader, final Context context, String url, final String oAuthCode, final boolean flag, final View view, final OnGetObjectResponseListner listner) {
+        if (!Util.isConnected(context)) {
+            Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),view);
+            listner.onGetArrayResponse(null);
+            return;
+        }
+        if (flag) {
+            dialog= CallingProgressDialog.chooseDialog(context,customLoader);
+            dialog.setCancelable(false);
+            dialog.setMessage("Please wait...");
+            showpDialog();
+        }
+
+        final JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                try {
+                    listner.onGetArrayResponse(jsonArray);
+                } catch (Exception e) {
+                    listner.onGetArrayResponse(null);
+                    e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                if (flag)
+                    hidepDialog();
+                Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
+                listner.onGetArrayResponse(null);
+                VolleyLog.d("Error: " + volleyError.getMessage());
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                if (oAuthCode != null) {
+                    headers.put("JWTTOKEN",oAuthCode);
+                }
+                return headers;
+            }
+        };
+        jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(jsonArrayRequest);
+    }
+
+    //4.4 ---------------------------------------------------------------------------------
+    //Get API ARRAY Request with header
+    public GetDataParserArrayRequest(final String customLoader, final Context context, String url, final String oAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
+        if (!Util.isConnected(context)) {
+            Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
+            listner.onGetArrayResponse(null);
+            return;
+        }
+        if (flag) {
+            dialog= CallingProgressDialog.chooseDialog(context,customLoader);
+            dialog.setCancelable(false);
+            dialog.setMessage("Please wait...");
+            showpDialog();
+        }
+
+        final JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                try {
+                    listner.onGetArrayResponse(jsonArray);
+                } catch (Exception e) {
+                    listner.onGetArrayResponse(null);
+                    e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                if (flag)
+                    hidepDialog();
+                Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
+                listner.onGetArrayResponse(null);
+                VolleyLog.d("Error: " + volleyError.getMessage());
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                if (oAuthCode != null) {
+                    headers.put("JWTTOKEN",oAuthCode);
+                }
+                return headers;
+
+            }
+        };
+        jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(jsonArrayRequest);
+    }
+
+    //5.5 ---------------------------------------------------------------------------------
     //Get API ARRAY Request with header
     public GetDataParserArrayRequest(final String customLoader,final Context context, String url, final HashMap<String,String> hashMapAuthCode, final boolean flag, final OnGetObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
-            //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
             listner.onGetArrayResponse(null);
             return;
         }
@@ -375,7 +508,6 @@ public class GetDataParserArrayRequest {
             }
         };
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //AppController.getInstance().addToRequestQueue(jsonArrayRequest);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(jsonArrayRequest);
     }

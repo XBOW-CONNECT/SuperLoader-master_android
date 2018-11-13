@@ -48,7 +48,6 @@ public class PostDataParserObjectRequest {
     public PostDataParserObjectRequest(final Context context, String url, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
-            //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
             listner.onPostObjectResponse(null);
             return;
         }
@@ -81,35 +80,23 @@ public class PostDataParserObjectRequest {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
-                //TastyToast.makeText(context, "Network error.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-
             }
         }) {
             @Override
             protected Map<String, String> getParams() {
                 return params;
             }
-            /*@Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
-                if (AppData.sToken != null) {
-                    headers.put("token", AppData.sToken);
-                }
-                return headers;
-            }*/
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //AppController.getInstance().addToRequestQueue(postRequest);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(postRequest);
     }
 
-    //--------------------------------------------------------------------------------------------------------------------
+    //2 --------------------------------------------------------------------------------------------------------------------
     //Normal WebService Hit with view that means Only View Refresh when Network Error
     public PostDataParserObjectRequest(final Context context, String url, final Map<String, String> params, final boolean flag, final View view, final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),view);
-            //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
             listner.onPostObjectResponse(null);
             return;
         }
@@ -142,8 +129,6 @@ public class PostDataParserObjectRequest {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),view);
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
-                //TastyToast.makeText(context, "Network error.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-
             }
         }) {
             @Override
@@ -152,11 +137,10 @@ public class PostDataParserObjectRequest {
             }
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //AppController.getInstance().addToRequestQueue(postRequest);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(postRequest);
     }
-    //--------------------------------------------------------------------------------------------------------------------
+    //3 --------------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService
     public PostDataParserObjectRequest(final Context context, String url, final Map<String,String> headers, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
@@ -174,7 +158,6 @@ public class PostDataParserObjectRequest {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            //Util util = new Util();
                             JSONObject jobj = new JSONObject(response);
                             listner.onPostObjectResponse(jobj);
                         } catch (Exception e) {
@@ -192,8 +175,6 @@ public class PostDataParserObjectRequest {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
-                //TastyToast.makeText(context, "Network error.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-
             }
         }) {
             @Override
@@ -206,12 +187,62 @@ public class PostDataParserObjectRequest {
             }
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT ));
-        //AppController.getInstance().addToRequestQueue(postRequest);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(postRequest);
     }
 
-    //--------------------------------------------------------------------------------------------------------------------
+    //4 --------------------------------------------------------------------------------------------------------------------
+    //Header Request Auth Hit WebService
+    public PostDataParserObjectRequest(final Context context, String url, final Map<String,String> headers, final Map<String, String> params, final boolean flag, final View v, final OnPostObjectResponseListner listner) {
+        if (!Util.isConnected(context)) {
+            Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),v);
+            listner.onPostObjectResponse(null);
+            return;
+        }
+        if (flag) {
+            dialog = MyCustomProgressDialog.ctor(context);
+            dialog.setCancelable(false);
+            dialog.setMessage("Please wait...");
+            showpDialog();
+        }
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jobj = new JSONObject(response);
+                    listner.onPostObjectResponse(jobj);
+                } catch (Exception e) {
+                    listner.onPostObjectResponse(null);
+                    e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (flag)
+                    hidepDialog();
+                Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
+                listner.onPostObjectResponse(null);
+                VolleyLog.d("Error: " + error.getMessage());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return params;
+            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return headers;
+            }
+        };
+        postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT ));
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(postRequest);
+    }
+
+    //5 --------------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService
     public PostDataParserObjectRequest(final Context context, String url, final String headers, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
@@ -229,7 +260,6 @@ public class PostDataParserObjectRequest {
             @Override
             public void onResponse(String response) {
                 try {
-                    //Util util = new Util();
                     JSONObject jobj = new JSONObject(response);
                     listner.onPostObjectResponse(jobj);
                 } catch (Exception e) {
@@ -247,8 +277,6 @@ public class PostDataParserObjectRequest {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
-                //TastyToast.makeText(context, "Network error.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-
             }
         }) {
             @Override
@@ -263,20 +291,20 @@ public class PostDataParserObjectRequest {
             }
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT ));
-        //AppController.getInstance().addToRequestQueue(postRequest);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(postRequest);
     }
-    //-------------------------------------------------------------------------------------------------------------
-    //Header Request Auth Hit WebService custom Loader
-    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final Map<String,String> headersHashMap, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
+
+    //6 --------------------------------------------------------------------------------------------------------------------
+    //Header Request Auth Hit WebService
+    public PostDataParserObjectRequest(final Context context, String url, final String headers, final Map<String, String> params, final boolean flag,final View v, final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
-            Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
+            Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),v);
             listner.onPostObjectResponse(null);
             return;
         }
         if (flag) {
-            dialog=CallingProgressDialog.chooseDialog(context,customLoader);
+            dialog = MyCustomProgressDialog.ctor(context);
             dialog.setCancelable(false);
             dialog.setMessage("Please wait...");
             showpDialog();
@@ -285,7 +313,6 @@ public class PostDataParserObjectRequest {
             @Override
             public void onResponse(String response) {
                 try {
-                    //Util util = new Util();
                     JSONObject jobj = new JSONObject(response);
                     listner.onPostObjectResponse(jobj);
                 } catch (Exception e) {
@@ -300,11 +327,9 @@ public class PostDataParserObjectRequest {
             public void onErrorResponse(VolleyError error) {
                 if (flag)
                     hidepDialog();
-                Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
+                Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
-                //TastyToast.makeText(context, "Network error.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-
             }
         }) {
             @Override
@@ -313,20 +338,21 @@ public class PostDataParserObjectRequest {
             }
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                return headersHashMap;
+                HashMap<String,String>header=new HashMap<>();
+                header.put("JWTTOKEN",headers);
+                return header;
             }
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT ));
-        //AppController.getInstance().addToRequestQueue(postRequest);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(postRequest);
     }
-    //------------------------------------------------------------------------------------------------------------------
+
+    //1.1 ------------------------------------------------------------------------------------------------------------------
     //Normal WebService Hit custom Loader
     public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
-            //TastyToast.makeText(context, "No internet connections.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
             listner.onPostObjectResponse(null);
             return;
         }
@@ -359,25 +385,271 @@ public class PostDataParserObjectRequest {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
-                //TastyToast.makeText(context, "Network error.", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-
             }
         }) {
             @Override
             protected Map<String, String> getParams() {
                 return params;
             }
-            /*@Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
-                if (AppData.sToken != null) {
-                    headers.put("token", AppData.sToken);
-                }
-                return headers;
-            }*/
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //AppController.getInstance().addToRequestQueue(postRequest);
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(postRequest);
+    }
+
+    //2.2 --------------------------------------------------------------------------------------------------------------------
+    //Normal WebService Hit with view that means Only View Refresh when Network Error
+    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final Map<String, String> params, final boolean flag, final View view, final OnPostObjectResponseListner listner) {
+        if (!Util.isConnected(context)) {
+            Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),view);
+            listner.onPostObjectResponse(null);
+            return;
+        }
+        if (flag) {
+            dialog=CallingProgressDialog.chooseDialog(context,customLoader);
+            dialog.setCancelable(false);
+            dialog.setMessage("Please wait...");
+            showpDialog();
+        }
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            Util util = new Util();
+                            JSONObject jobj = util.getjsonobject(response);
+                            listner.onPostObjectResponse(jobj);
+                        } catch (Exception e) {
+                            listner.onPostObjectResponse(null);
+                            e.printStackTrace();
+                        }finally {
+                            if (flag) hidepDialog();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (flag)
+                    hidepDialog();
+                Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),view);
+                listner.onPostObjectResponse(null);
+                VolleyLog.d("Error: " + error.getMessage());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return params;
+            }
+        };
+        postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(postRequest);
+    }
+
+    //3.3 -------------------------------------------------------------------------------------------------------------
+    //Header Request Auth Hit WebService custom Loader
+    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final Map<String,String> headersHashMap, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
+        if (!Util.isConnected(context)) {
+            Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
+            listner.onPostObjectResponse(null);
+            return;
+        }
+        if (flag) {
+            dialog=CallingProgressDialog.chooseDialog(context,customLoader);
+            dialog.setCancelable(false);
+            dialog.setMessage("Please wait...");
+            showpDialog();
+        }
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jobj = new JSONObject(response);
+                    listner.onPostObjectResponse(jobj);
+                } catch (Exception e) {
+                    listner.onPostObjectResponse(null);
+                    e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (flag)
+                    hidepDialog();
+                Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
+                listner.onPostObjectResponse(null);
+                VolleyLog.d("Error: " + error.getMessage());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return params;
+            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return headersHashMap;
+            }
+        };
+        postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT ));
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(postRequest);
+    }
+
+    //4.4 --------------------------------------------------------------------------------------------------------------------
+    //Header Request Auth Hit WebService
+    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final Map<String,String> headers, final Map<String, String> params, final boolean flag, final View v, final OnPostObjectResponseListner listner) {
+        if (!Util.isConnected(context)) {
+            Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),v);
+            listner.onPostObjectResponse(null);
+            return;
+        }
+        if (flag) {
+            dialog=CallingProgressDialog.chooseDialog(context,customLoader);
+            dialog.setCancelable(false);
+            dialog.setMessage("Please wait...");
+            showpDialog();
+        }
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jobj = new JSONObject(response);
+                    listner.onPostObjectResponse(jobj);
+                } catch (Exception e) {
+                    listner.onPostObjectResponse(null);
+                    e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (flag)
+                    hidepDialog();
+                Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
+                listner.onPostObjectResponse(null);
+                VolleyLog.d("Error: " + error.getMessage());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return params;
+            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return headers;
+            }
+        };
+        postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT ));
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(postRequest);
+    }
+
+    //5.5 --------------------------------------------------------------------------------------------------------------------
+    //Header Request Auth Hit WebService
+    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final String headers, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
+        if (!Util.isConnected(context)) {
+            Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
+            listner.onPostObjectResponse(null);
+            return;
+        }
+        if (flag) {
+            dialog=CallingProgressDialog.chooseDialog(context,customLoader);
+            dialog.setCancelable(false);
+            dialog.setMessage("Please wait...");
+            showpDialog();
+        }
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jobj = new JSONObject(response);
+                    listner.onPostObjectResponse(jobj);
+                } catch (Exception e) {
+                    listner.onPostObjectResponse(null);
+                    e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (flag)
+                    hidepDialog();
+                Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
+                listner.onPostObjectResponse(null);
+                VolleyLog.d("Error: " + error.getMessage());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return params;
+            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String,String>header=new HashMap<>();
+                header.put("JWTTOKEN",headers);
+                return header;
+            }
+        };
+        postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT ));
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(postRequest);
+    }
+
+    //6.6 --------------------------------------------------------------------------------------------------------------------
+    //Header Request Auth Hit WebService
+    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final String headers, final Map<String, String> params, final boolean flag,final View v, final OnPostObjectResponseListner listner) {
+        if (!Util.isConnected(context)) {
+            Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),v);
+            listner.onPostObjectResponse(null);
+            return;
+        }
+        if (flag) {
+            dialog=CallingProgressDialog.chooseDialog(context,customLoader);
+            dialog.setCancelable(false);
+            dialog.setMessage("Please wait...");
+            showpDialog();
+        }
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jobj = new JSONObject(response);
+                    listner.onPostObjectResponse(jobj);
+                } catch (Exception e) {
+                    listner.onPostObjectResponse(null);
+                    e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (flag)
+                    hidepDialog();
+                Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
+                listner.onPostObjectResponse(null);
+                VolleyLog.d("Error: " + error.getMessage());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                return params;
+            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String,String>header=new HashMap<>();
+                header.put("JWTTOKEN",headers);
+                return header;
+            }
+        };
+        postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT ));
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(postRequest);
     }
