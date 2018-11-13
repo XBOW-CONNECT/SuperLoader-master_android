@@ -66,9 +66,9 @@ public class GetDataParserStringRequest {
                         } catch (Exception e) {
                             listner.onPostStringResponse(null);
                             e.printStackTrace();
+                        }finally {
+                            if (flag) hidepDialog();
                         }
-                        if (flag)
-                            hidepDialog();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -112,9 +112,9 @@ public class GetDataParserStringRequest {
                         } catch (Exception e) {
                             listner.onPostStringResponse(null);
                             e.printStackTrace();
+                        }finally {
+                            if (flag) hidepDialog();
                         }
-                        if (flag)
-                            hidepDialog();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -156,9 +156,9 @@ public class GetDataParserStringRequest {
                         } catch (Exception e) {
                             listner.onPostStringResponse(null);
                             e.printStackTrace();
+                        }finally {
+                            if (flag) hidepDialog();
                         }
-                        if (flag)
-                            hidepDialog();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -205,9 +205,9 @@ public class GetDataParserStringRequest {
                 } catch (Exception e) {
                     listner.onPostStringResponse(null);
                     e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
                 }
-                if (flag)
-                    hidepDialog();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -257,9 +257,9 @@ public class GetDataParserStringRequest {
                 } catch (Exception e) {
                     listner.onPostStringResponse(null);
                     e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
                 }
-                if (flag)
-                    hidepDialog();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -308,9 +308,9 @@ public class GetDataParserStringRequest {
                         } catch (Exception e) {
                             listner.onPostStringResponse(null);
                             e.printStackTrace();
+                        }finally {
+                            if (flag) hidepDialog();
                         }
-                        if (flag)
-                            hidepDialog();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -351,9 +351,9 @@ public class GetDataParserStringRequest {
                 } catch (Exception e) {
                     listner.onPostStringResponse(null);
                     e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
                 }
-                if (flag)
-                    hidepDialog();
             }
         }, new Response.ErrorListener() {
             @Override

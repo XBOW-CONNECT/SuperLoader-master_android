@@ -59,9 +59,9 @@ public class RawDataParserObjectRequestUnCastHM {
                 } catch (Exception e) {
                     listner.onGetObjectResponse(null);
                     e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
                 }
-                if (flag)
-                    hidepDialog();
             }
         }, new Response.ErrorListener() {
 
@@ -100,9 +100,9 @@ public class RawDataParserObjectRequestUnCastHM {
                 } catch (Exception e) {
                     listner.onGetObjectResponse(null);
                     e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
                 }
-                if (flag)
-                    hidepDialog();
             }
         }, new Response.ErrorListener() {
 
@@ -146,9 +146,9 @@ public class RawDataParserObjectRequestUnCastHM {
                 } catch (Exception e) {
                     listner.onGetObjectResponse(null);
                     e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
                 }
-                if (flag)
-                    hidepDialog();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -196,9 +196,9 @@ public class RawDataParserObjectRequestUnCastHM {
                 } catch (Exception e) {
                     listner.onGetObjectResponse(null);
                     e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
                 }
-                if (flag)
-                    hidepDialog();
             }
         }, new Response.ErrorListener() {
 
@@ -248,9 +248,9 @@ public class RawDataParserObjectRequestUnCastHM {
                 } catch (Exception e) {
                     listner.onGetObjectResponse(null);
                     e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
                 }
-                if (flag)
-                    hidepDialog();
             }
         }, new Response.ErrorListener() {
 
@@ -299,9 +299,9 @@ public class RawDataParserObjectRequestUnCastHM {
                 } catch (Exception e) {
                     listner.onGetObjectResponse(null);
                     e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
                 }
-                if (flag)
-                    hidepDialog();
             }
         }, new Response.ErrorListener() {
 
@@ -355,9 +355,9 @@ public class RawDataParserObjectRequestUnCastHM {
                 } catch (Exception e) {
                     listner.onGetObjectResponse(null);
                     e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
                 }
-                if (flag)
-                    hidepDialog();
             }
         }, new Response.ErrorListener() {
 

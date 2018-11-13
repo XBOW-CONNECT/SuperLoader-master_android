@@ -70,9 +70,9 @@ public class PostDataParserArrayRequest {
                         } catch (Exception e) {
                             listner.onPostOArrayResponse(null);
                             e.printStackTrace();
+                        }finally {
+                            if (flag) hidepDialog();
                         }
-                        if (flag)
-                            hidepDialog();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -131,9 +131,9 @@ public class PostDataParserArrayRequest {
                         } catch (Exception e) {
                             listner.onPostOArrayResponse(null);
                             e.printStackTrace();
+                        }finally {
+                            if (flag) hidepDialog();
                         }
-                        if (flag)
-                            hidepDialog();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -183,9 +183,9 @@ public class PostDataParserArrayRequest {
                         } catch (Exception e) {
                             listner.onPostOArrayResponse(null);
                             e.printStackTrace();
+                        }finally {
+                            if (flag) hidepDialog();
                         }
-                        if (flag)
-                            hidepDialog();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -241,9 +241,9 @@ public class PostDataParserArrayRequest {
                         } catch (Exception e) {
                             listner.onPostOArrayResponse(null);
                             e.printStackTrace();
+                        }finally {
+                            if (flag) hidepDialog();
                         }
-                        if (flag)
-                            hidepDialog();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -298,9 +298,9 @@ public class PostDataParserArrayRequest {
                         } catch (Exception e) {
                             listner.onPostOArrayResponse(null);
                             e.printStackTrace();
+                        }finally {
+                            if (flag) hidepDialog();
                         }
-                        if (flag)
-                            hidepDialog();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -354,9 +354,9 @@ public class PostDataParserArrayRequest {
                         } catch (Exception e) {
                             listner.onPostOArrayResponse(null);
                             e.printStackTrace();
+                        }finally {
+                            if (flag) hidepDialog();
                         }
-                        if (flag)
-                            hidepDialog();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -412,9 +412,9 @@ public class PostDataParserArrayRequest {
                 } catch (Exception e) {
                     listner.onPostOArrayResponse(null);
                     e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
                 }
-                if (flag)
-                    hidepDialog();
             }
         }, new Response.ErrorListener() {
             @Override

@@ -69,9 +69,9 @@ public class PostDataParserObjectRequest {
                         } catch (Exception e) {
                             listner.onPostObjectResponse(null);
                             e.printStackTrace();
+                        } finally {
+                            if (flag) hidepDialog();
                         }
-                        if (flag)
-                            hidepDialog();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -130,9 +130,9 @@ public class PostDataParserObjectRequest {
                         } catch (Exception e) {
                             listner.onPostObjectResponse(null);
                             e.printStackTrace();
+                        }finally {
+                            if (flag) hidepDialog();
                         }
-                        if (flag)
-                            hidepDialog();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -180,9 +180,9 @@ public class PostDataParserObjectRequest {
                         } catch (Exception e) {
                             listner.onPostObjectResponse(null);
                             e.printStackTrace();
+                        }finally {
+                            if (flag) hidepDialog();
                         }
-                        if (flag)
-                            hidepDialog();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -235,9 +235,9 @@ public class PostDataParserObjectRequest {
                 } catch (Exception e) {
                     listner.onPostObjectResponse(null);
                     e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
                 }
-                if (flag)
-                    hidepDialog();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -291,9 +291,9 @@ public class PostDataParserObjectRequest {
                 } catch (Exception e) {
                     listner.onPostObjectResponse(null);
                     e.printStackTrace();
+                }finally {
+                    if (flag) hidepDialog();
                 }
-                if (flag)
-                    hidepDialog();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -347,9 +347,9 @@ public class PostDataParserObjectRequest {
                         } catch (Exception e) {
                             listner.onPostObjectResponse(null);
                             e.printStackTrace();
+                        }finally {
+                            if (flag) hidepDialog();
                         }
-                        if (flag)
-                            hidepDialog();
                     }
                 }, new Response.ErrorListener() {
             @Override
