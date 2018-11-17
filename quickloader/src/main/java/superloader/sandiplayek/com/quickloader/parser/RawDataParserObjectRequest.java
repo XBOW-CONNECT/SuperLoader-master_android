@@ -31,13 +31,15 @@ public class RawDataParserObjectRequest {
     AlertDialog dialog;
 
     private void showpDialog() {
-        if (!dialog.isShowing())
-            dialog.show();
+        if(dialog!=null){
+            if (!dialog.isShowing()) dialog.show();
+        }
     }
 
     private void hidepDialog() {
-        if (dialog.isShowing())
-            dialog.dismiss();
+        if(dialog!=null){
+            if (dialog.isShowing()) dialog.dismiss();
+        }
     }
     //1 ................................................................................................................
     public RawDataParserObjectRequest(final Context context, String url, HashMap<String,String>hashMap, final boolean flag, final OnGetObjectResponseListner listner) {

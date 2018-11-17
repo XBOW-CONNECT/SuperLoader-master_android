@@ -34,13 +34,15 @@ public class PostDataParserObjectRequest {
     ProgressDialog dialog;
 
     private void showpDialog() {
-        if (!dialog.isShowing())
-            dialog.show();
+        if(dialog!=null){
+            if (!dialog.isShowing()) dialog.show();
+        }
     }
 
     private void hidepDialog() {
-        if (dialog.isShowing())
-            dialog.dismiss();
+        if(dialog!=null){
+            if (dialog.isShowing()) dialog.dismiss();
+        }
     }
 
     //1 --------------------------------------------------------------------------------------------------------------------
@@ -75,13 +77,12 @@ public class PostDataParserObjectRequest {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (flag)
-                    hidepDialog();
+                if (flag) hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
             }
-        }) {
+        }){
             @Override
             protected Map<String, String> getParams() {
                 return params;
@@ -221,17 +222,17 @@ public class PostDataParserObjectRequest {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (flag)
-                    hidepDialog();
+                if (flag) hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
             }
-        }) {
+        }){
             @Override
             protected Map<String, String> getParams() {
                 return params;
             }
+
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 return headers;

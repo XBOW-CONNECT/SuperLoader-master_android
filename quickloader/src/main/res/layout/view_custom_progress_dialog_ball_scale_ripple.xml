@@ -16,7 +16,7 @@
             android:layout_height="50dp"
             android:layout_marginRight="10dp"
             android:visibility="visible"
-            app:indicator="BallScaleRipple"
-            app:indicator_color="#000000" />
+            app:indicatorName="BallScaleRipple"
+            app:indicatorColor="#000000" />
     </LinearLayout>
 </LinearLayout>

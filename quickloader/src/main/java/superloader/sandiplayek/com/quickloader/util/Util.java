@@ -143,9 +143,10 @@ public class Util {
         try {
             jobj = new JSONObject(responce);
         } catch (Exception e) {
-
+            jobj = null;
+        }finally {
+            return jobj;
         }
-        return jobj;
     }
 
     public static JSONArray getjsonarray(String responce) {
@@ -153,9 +154,10 @@ public class Util {
         try {
             jrr = new JSONArray(responce);
         } catch (Exception e) {
-
+            jrr = null;
+        }finally {
+            return jrr;
         }
-        return jrr;
     }
 
     public static final boolean isValidPhoneNumber(CharSequence target) {

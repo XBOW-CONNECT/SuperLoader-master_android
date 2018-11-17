@@ -35,13 +35,15 @@ public class PostDataParserArrayRequest {
     ProgressDialog dialog;
 
     private void showpDialog() {
-        if (!dialog.isShowing())
-            dialog.show();
+        if(dialog!=null){
+            if (!dialog.isShowing()) dialog.show();
+        }
     }
 
     private void hidepDialog() {
-        if (dialog.isShowing())
-            dialog.dismiss();
+        if(dialog!=null){
+            if (dialog.isShowing()) dialog.dismiss();
+        }
     }
 
     //1 --------------------------------------------------------------------------------------------------------------------

@@ -35,13 +35,15 @@ public class GetDataParserArrayRequest {
     AlertDialog dialog;
 
     private void showpDialog() {
-        if (!dialog.isShowing())
-            dialog.show();
+        if(dialog!=null){
+            if (!dialog.isShowing()) dialog.show();
+        }
     }
 
     private void hidepDialog() {
-        if (dialog.isShowing())
-            dialog.dismiss();
+        if(dialog!=null){
+            if (dialog.isShowing()) dialog.dismiss();
+        }
     }
     //1 ---------------------------------------------------------------------------------
     //Normal Get API ARRAY Request
@@ -69,14 +71,11 @@ public class GetDataParserArrayRequest {
                 }finally {
                     if (flag) hidepDialog();
                 }
-//                if (flag)
-//                    hidepDialog();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                if (flag)
-                    hidepDialog();
+                if (flag) hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
                 listner.onGetArrayResponse(null);
                 VolleyLog.d("Error: " + volleyError.getMessage());
