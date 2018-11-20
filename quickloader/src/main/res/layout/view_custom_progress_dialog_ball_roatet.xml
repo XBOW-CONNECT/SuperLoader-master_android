@@ -17,7 +17,7 @@
             android:layout_height="50dp"
             android:layout_marginRight="10dp"
             android:visibility="visible"
-            app:indicatorName="BallRotate"
+            app:indicatorName="BallRotateIndicator"
             app:indicatorColor="#000000" />
     </LinearLayout>
 </LinearLayout>
