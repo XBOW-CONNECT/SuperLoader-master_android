@@ -3,6 +3,7 @@ package superloader.sandiplayek.com.quickloader.parser;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.view.View;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -19,10 +20,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import superloader.sandiplayek.com.quickloader.R;
-import superloader.sandiplayek.com.quickloader.appcontroller.AppController;
 import superloader.sandiplayek.com.quickloader.customprogress.CallingProgressDialog;
 import superloader.sandiplayek.com.quickloader.customprogress.MyCustomProgressDialog;
-import superloader.sandiplayek.com.quickloader.customprogress.MyCustomProgressDialogChanges;
 import superloader.sandiplayek.com.quickloader.util.Util;
 
 
@@ -30,35 +29,17 @@ import superloader.sandiplayek.com.quickloader.util.Util;
  * Created on 16/9/16.
  * @author Sandip
  */
-public class PostDataParserObjectRequest {
-    ProgressDialog dialog;
-
-    private void showpDialog() {
-        if(dialog!=null){
-            if (!dialog.isShowing()) dialog.show();
-        }
-    }
-
-    private void hidepDialog() {
-        if(dialog!=null){
-            if (dialog.isShowing()) dialog.dismiss();
-        }
-    }
+public class PostDataParserObjectRequestWithOutDialog {
 
     //1 --------------------------------------------------------------------------------------------------------------------
     //Normal WebService Hit
-    public PostDataParserObjectRequest(final Context context, String url, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
+    public PostDataParserObjectRequestWithOutDialog(final Context context, String url, final Map<String, String> params,   final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             listner.onPostObjectResponse(null);
             return;
         }
-        if (flag) {
-            dialog = MyCustomProgressDialog.ctor(context);
-            dialog.setCancelable(false);
-            dialog.setMessage("Please wait...");
-            showpDialog();
-        }
+         
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
@@ -70,14 +51,12 @@ public class PostDataParserObjectRequest {
                         } catch (Exception e) {
                             listner.onPostObjectResponse(null);
                             e.printStackTrace();
-                        } finally {
-                            if (flag) hidepDialog();
-                        }
+                        }   
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (flag) hidepDialog();
+                   
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
@@ -95,18 +74,13 @@ public class PostDataParserObjectRequest {
 
     //2 --------------------------------------------------------------------------------------------------------------------
     //Normal WebService Hit with view that means Only View Refresh when Network Error
-    public PostDataParserObjectRequest(final Context context, String url, final Map<String, String> params, final boolean flag, final View view, final OnPostObjectResponseListner listner) {
+    public PostDataParserObjectRequestWithOutDialog(final Context context, String url, final Map<String, String> params,   final View view, final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),view);
             listner.onPostObjectResponse(null);
             return;
         }
-        if (flag) {
-            dialog = MyCustomProgressDialog.ctor(context);
-            dialog.setCancelable(false);
-            dialog.setMessage("Please wait...");
-            showpDialog();
-        }
+         
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
@@ -118,15 +92,11 @@ public class PostDataParserObjectRequest {
                         } catch (Exception e) {
                             listner.onPostObjectResponse(null);
                             e.printStackTrace();
-                        }finally {
-                            if (flag) hidepDialog();
-                        }
+                        }  
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (flag)
-                    hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),view);
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
@@ -143,18 +113,13 @@ public class PostDataParserObjectRequest {
     }
     //3 --------------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService
-    public PostDataParserObjectRequest(final Context context, String url, final Map<String,String> headers, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
+    public PostDataParserObjectRequestWithOutDialog(final Context context, String url, final Map<String,String> headers, final Map<String, String> params,   final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             listner.onPostObjectResponse(null);
             return;
         }
-        if (flag) {
-            dialog = MyCustomProgressDialog.ctor(context);
-            dialog.setCancelable(false);
-            dialog.setMessage("Please wait...");
-            showpDialog();
-        }
+         
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -164,15 +129,11 @@ public class PostDataParserObjectRequest {
                         } catch (Exception e) {
                             listner.onPostObjectResponse(null);
                             e.printStackTrace();
-                        }finally {
-                            if (flag) hidepDialog();
-                        }
+                        }  
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (flag)
-                    hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
@@ -194,18 +155,13 @@ public class PostDataParserObjectRequest {
 
     //4 --------------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService
-    public PostDataParserObjectRequest(final Context context, String url, final Map<String,String> headers, final Map<String, String> params, final boolean flag, final View v, final OnPostObjectResponseListner listner) {
+    public PostDataParserObjectRequestWithOutDialog(final Context context, String url, final Map<String,String> headers, final Map<String, String> params,   final View v, final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),v);
             listner.onPostObjectResponse(null);
             return;
         }
-        if (flag) {
-            dialog = MyCustomProgressDialog.ctor(context);
-            dialog.setCancelable(false);
-            dialog.setMessage("Please wait...");
-            showpDialog();
-        }
+         
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -215,14 +171,12 @@ public class PostDataParserObjectRequest {
                 } catch (Exception e) {
                     listner.onPostObjectResponse(null);
                     e.printStackTrace();
-                }finally {
-                    if (flag) hidepDialog();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (flag) hidepDialog();
+                   
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
@@ -245,18 +199,13 @@ public class PostDataParserObjectRequest {
 
     //5 --------------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService
-    public PostDataParserObjectRequest(final Context context, String url, final String headers, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
+    public PostDataParserObjectRequestWithOutDialog(final Context context, String url, final String headers, final Map<String, String> params,   final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             listner.onPostObjectResponse(null);
             return;
         }
-        if (flag) {
-            dialog = MyCustomProgressDialog.ctor(context);
-            dialog.setCancelable(false);
-            dialog.setMessage("Please wait...");
-            showpDialog();
-        }
+         
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -266,15 +215,11 @@ public class PostDataParserObjectRequest {
                 } catch (Exception e) {
                     listner.onPostObjectResponse(null);
                     e.printStackTrace();
-                }finally {
-                    if (flag) hidepDialog();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (flag)
-                    hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
@@ -298,18 +243,13 @@ public class PostDataParserObjectRequest {
 
     //6 --------------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService
-    public PostDataParserObjectRequest(final Context context, String url, final String headers, final Map<String, String> params, final boolean flag,final View v, final OnPostObjectResponseListner listner) {
+    public PostDataParserObjectRequestWithOutDialog(final Context context, String url, final String headers, final Map<String, String> params,   final View v, final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),v);
             listner.onPostObjectResponse(null);
             return;
         }
-        if (flag) {
-            dialog = MyCustomProgressDialog.ctor(context);
-            dialog.setCancelable(false);
-            dialog.setMessage("Please wait...");
-            showpDialog();
-        }
+         
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -319,15 +259,11 @@ public class PostDataParserObjectRequest {
                 } catch (Exception e) {
                     listner.onPostObjectResponse(null);
                     e.printStackTrace();
-                }finally {
-                    if (flag) hidepDialog();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (flag)
-                    hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
@@ -351,17 +287,11 @@ public class PostDataParserObjectRequest {
 
     //1.1 ------------------------------------------------------------------------------------------------------------------
     //Normal WebService Hit custom Loader
-    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
+    public PostDataParserObjectRequestWithOutDialog(final String customLoader, final Context context, String url, final Map<String, String> params,   final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             listner.onPostObjectResponse(null);
             return;
-        }
-        if (flag) {
-            dialog=CallingProgressDialog.chooseDialog(context,customLoader);
-            dialog.setCancelable(false);
-            dialog.setMessage("Please wait...");
-            showpDialog();
         }
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -374,15 +304,11 @@ public class PostDataParserObjectRequest {
                         } catch (Exception e) {
                             listner.onPostObjectResponse(null);
                             e.printStackTrace();
-                        }finally {
-                            if (flag) hidepDialog();
-                        }
+                        }  
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (flag)
-                    hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
@@ -400,17 +326,11 @@ public class PostDataParserObjectRequest {
 
     //2.2 --------------------------------------------------------------------------------------------------------------------
     //Normal WebService Hit with view that means Only View Refresh when Network Error
-    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final Map<String, String> params, final boolean flag, final View view, final OnPostObjectResponseListner listner) {
+    public PostDataParserObjectRequestWithOutDialog(final String customLoader, final Context context, String url, final Map<String, String> params,   final View view, final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),view);
             listner.onPostObjectResponse(null);
             return;
-        }
-        if (flag) {
-            dialog=CallingProgressDialog.chooseDialog(context,customLoader);
-            dialog.setCancelable(false);
-            dialog.setMessage("Please wait...");
-            showpDialog();
         }
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -423,15 +343,11 @@ public class PostDataParserObjectRequest {
                         } catch (Exception e) {
                             listner.onPostObjectResponse(null);
                             e.printStackTrace();
-                        }finally {
-                            if (flag) hidepDialog();
-                        }
+                        }  
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (flag)
-                    hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),view);
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
@@ -449,17 +365,11 @@ public class PostDataParserObjectRequest {
 
     //3.3 -------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService custom Loader
-    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final Map<String,String> headersHashMap, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
+    public PostDataParserObjectRequestWithOutDialog(final String customLoader, final Context context, String url, final Map<String,String> headersHashMap, final Map<String, String> params,   final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             listner.onPostObjectResponse(null);
             return;
-        }
-        if (flag) {
-            dialog=CallingProgressDialog.chooseDialog(context,customLoader);
-            dialog.setCancelable(false);
-            dialog.setMessage("Please wait...");
-            showpDialog();
         }
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
             @Override
@@ -470,14 +380,12 @@ public class PostDataParserObjectRequest {
                 } catch (Exception e) {
                     listner.onPostObjectResponse(null);
                     e.printStackTrace();
-                }finally {
-                    if (flag) hidepDialog();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (flag) hidepDialog();
+                   
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
@@ -499,17 +407,11 @@ public class PostDataParserObjectRequest {
 
     //4.4 --------------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService
-    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final Map<String,String> headers, final Map<String, String> params, final boolean flag, final View v, final OnPostObjectResponseListner listner) {
+    public PostDataParserObjectRequestWithOutDialog(final String customLoader, final Context context, String url, final Map<String,String> headers, final Map<String, String> params,   final View v, final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),v);
             listner.onPostObjectResponse(null);
             return;
-        }
-        if (flag) {
-            dialog=CallingProgressDialog.chooseDialog(context,customLoader);
-            dialog.setCancelable(false);
-            dialog.setMessage("Please wait...");
-            showpDialog();
         }
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
             @Override
@@ -521,14 +423,12 @@ public class PostDataParserObjectRequest {
                     listner.onPostObjectResponse(null);
                     e.printStackTrace();
                 }finally {
-                    if (flag) hidepDialog();
+                       
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (flag)
-                    hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
@@ -550,17 +450,11 @@ public class PostDataParserObjectRequest {
 
     //5.5 --------------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService
-    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final String headers, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
+    public PostDataParserObjectRequestWithOutDialog(final String customLoader, final Context context, String url, final String headers, final Map<String, String> params,   final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             listner.onPostObjectResponse(null);
             return;
-        }
-        if (flag) {
-            dialog=CallingProgressDialog.chooseDialog(context,customLoader);
-            dialog.setCancelable(false);
-            dialog.setMessage("Please wait...");
-            showpDialog();
         }
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
             @Override
@@ -572,14 +466,12 @@ public class PostDataParserObjectRequest {
                     listner.onPostObjectResponse(null);
                     e.printStackTrace();
                 }finally {
-                    if (flag) hidepDialog();
+                       
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (flag)
-                    hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
@@ -603,17 +495,11 @@ public class PostDataParserObjectRequest {
 
     //6.6 --------------------------------------------------------------------------------------------------------------------
     //Header Request Auth Hit WebService
-    public PostDataParserObjectRequest(final String customLoader, final Context context, String url, final String headers, final Map<String, String> params, final boolean flag,final View v, final OnPostObjectResponseListner listner) {
+    public PostDataParserObjectRequestWithOutDialog(final String customLoader, final Context context, String url, final String headers, final Map<String, String> params,   final View v, final OnPostObjectResponseListner listner) {
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror),v);
             listner.onPostObjectResponse(null);
             return;
-        }
-        if (flag) {
-            dialog=CallingProgressDialog.chooseDialog(context,customLoader);
-            dialog.setCancelable(false);
-            dialog.setMessage("Please wait...");
-            showpDialog();
         }
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
             @Override
@@ -625,14 +511,12 @@ public class PostDataParserObjectRequest {
                     listner.onPostObjectResponse(null);
                     e.printStackTrace();
                 }finally {
-                    if (flag) hidepDialog();
+                       
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (flag)
-                    hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
