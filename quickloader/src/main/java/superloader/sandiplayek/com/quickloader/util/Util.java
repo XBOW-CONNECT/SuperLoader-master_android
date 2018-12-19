@@ -3,10 +3,13 @@ package superloader.sandiplayek.com.quickloader.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.view.View;
@@ -31,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 import superloader.sandiplayek.com.quickloader.R;
@@ -261,20 +265,6 @@ public class Util {
         }
         return value;
     }
-    /*public static void showTime(final Context context, final LinearLayout mLnTimeSlot){
-        LayoutInflater inflater=LayoutInflater.from(context);
-        final View v=inflater.inflate(R.layout.dayfragmentrow,null);
-        final ImageView iv_cross=(ImageView)v.findViewById(R.id.iv_cross);
-        iv_cross.setTag(AppData.flag);
-        iv_cross.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, ""+iv_cross.getTag(), Toast.LENGTH_SHORT).show();
-                mLnTimeSlot.removeView(v);
-            }
-        });
-        mLnTimeSlot.addView(v);
-    }
     public static boolean isTimeAfter(Date startTime, Date endTime) {
         if (endTime.before(startTime)) { //Same way you can check with after() method also.
             return false;
@@ -288,7 +278,7 @@ public class Util {
         } else {
             return true;
         }
-    }*/
+    }
     public static boolean nullChecker(String value){
         return (value.equals("")||value.equals("null")||value.isEmpty()||value==null)?true:false;
     }
@@ -323,4 +313,71 @@ public class Util {
             e.printStackTrace();
         }
     }
+
+    public static String floatBounder(String value){
+        String neetValue="";
+        if(value.matches("\\d+(?:\\.\\d+)?")){
+            neetValue = value.substring(0, value.length() - 2);
+        }else{
+            neetValue=value;
+        }
+        return neetValue;
+    }
+
+    public static String checkKeyPart(JSONObject jsonObject, String keyPartName){
+        String value = "";
+        try{
+            if(jsonObject.has(keyPartName)){
+                value = jsonObject.getString(keyPartName).toString();
+                return value;
+            }else{
+                return value;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return value;
+        }
+    }
+
+    public static boolean getValidJsonData(JSONObject jsonObject) {
+        if(jsonObject.length() == 0  || jsonObject == null){
+            return false;
+        }
+        return true;
+    }
+
+    public static String checkDisplaySize(Context context){
+        int screenSize = ((Activity)context).getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK;
+        String toastMsg;
+        switch(screenSize) {
+            case Configuration.SCREENLAYOUT_SIZE_LARGE:
+                toastMsg = "Large screen";
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_NORMAL:
+                toastMsg = "Normal screen";
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_SMALL:
+                toastMsg = "Small screen";
+                break;
+            default:
+                toastMsg = "Screen size is neither large, normal or small";
+        }
+        return  toastMsg;
+    }
+
+    public static void searchPackageNameToPlayStore(Context context,String packageName) {
+        if(Util.isConnected(context)){
+            PackageManager pm = context.getPackageManager();
+            Intent intent = new Intent();
+            intent.setPackage(packageName);
+            Intent intentPlay = new Intent(Intent.ACTION_VIEW);
+            intentPlay.setData(Uri.parse("market://details?id="+packageName));
+            context.startActivity(intentPlay);
+        }else{
+            Toast.makeText(context, "Check Your Internet Connection", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 }
