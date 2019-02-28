@@ -1,5 +1,7 @@
 package superloader.sandiplayek.com.quickloader.parser;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.view.View;
@@ -35,6 +37,9 @@ import superloader.sandiplayek.com.quickloader.util.Util;
 public class PostDataParserObjectRequest {
     ProgressDialog dialog;
 
+    Dialog d;
+
+
     private void showpDialog() {
         if(dialog!=null){
             if (!dialog.isShowing()) dialog.show();
@@ -50,6 +55,8 @@ public class PostDataParserObjectRequest {
     //1 --------------------------------------------------------------------------------------------------------------------
     //Normal WebService Hit
     public PostDataParserObjectRequest(final Context context, String url, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
+        d = new Dialog(context);
+
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             listner.onPostObjectResponse(null);
@@ -80,6 +87,8 @@ public class PostDataParserObjectRequest {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (flag) hidepDialog();
+                dialog.setTitle(error.getMessage());
+                dialog.show();
                 Util.showSnakBar(context,error.getMessage());
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
