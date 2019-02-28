@@ -20,11 +20,12 @@ import superloader.sandiplayek.com.quickloader.MyView;
 import superloader.sandiplayek.com.quickloader.customprogress.CustomProgressDialog;
 import superloader.sandiplayek.com.quickloader.customprogress.MyCustomProgressDialog;
 import superloader.sandiplayek.com.quickloader.parser.PostDataParserObjectRequest;
+import superloader.sandiplayek.com.quickloader.sharedhelper.SharedHelper;
 import superloader.sandiplayek.com.quickloader.util.Util;
 
 public class MainActivity extends Activity implements View.OnClickListener{
     String url="";  //Enter Here Your Login URL
-    String pass="",phone="", succ ="",msg="";
+    String pass="",phone="";
     EditText et_ph,et_pass;
     Button btn_chk;
     TextView textView;
@@ -34,12 +35,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findIds();
-
-        if(Util.isConnected(MainActivity.this)){
-            Toast.makeText(this, "YES", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(this, "NO", Toast.LENGTH_SHORT).show();
-        }
     }
 
     private void findIds() {
@@ -49,50 +44,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btn_chk.setOnClickListener(this);
     }
 
-    public void check_login(){
-        HashMap<String,String>hashMap=new HashMap<>();
-        hashMap.put("", phone);     //Enter KEY value for phone and pass
-        hashMap.put("", pass);
-        new PostDataParserObjectRequest("1",MainActivity.this, url, hashMap, true, new PostDataParserObjectRequest.OnPostObjectResponseListner() {
-            @Override
-            public void onPostObjectResponse(JSONObject response) {
-                try {
-                    succ = response.getString("responseCode");
-                    msg = response.getString("message");
-                    if (succ.equals("1")) {
-                        Toast.makeText(MainActivity.this, "" + msg, Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(MainActivity.this, "" + msg, Toast.LENGTH_SHORT).show();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+    public void check_login(String phone,String pass){
 
-    public void check_login_1(){
-        HashMap<String,String>hashMap=new HashMap<>();
-        hashMap.put("", phone);     //Enter KEY value for phone and pass
-        hashMap.put("", pass);
-
-        HashMap<String,String>hashMapHeader=new HashMap<>();
-        new PostDataParserObjectRequest("1",MainActivity.this, url, hashMapHeader, hashMap, true, new PostDataParserObjectRequest.OnPostObjectResponseListner() {
-            @Override
-            public void onPostObjectResponse(JSONObject response) {
-                try {
-                    succ = response.getString("responseCode");
-                    msg = response.getString("message");
-                    if (succ.equals("1")) {
-                        Toast.makeText(MainActivity.this, "" + msg, Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(MainActivity.this, "" + msg, Toast.LENGTH_SHORT).show();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
     @Override
@@ -103,8 +56,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             if(phone.equals("")||pass.equals("")){
                 Toast.makeText(this, "Enter all fields", Toast.LENGTH_SHORT).show();
                 return;
+            }else {
+                check_login(phone,pass);
             }
-            check_login();
+
         }
     }
 }

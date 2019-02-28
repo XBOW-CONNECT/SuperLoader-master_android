@@ -3,6 +3,8 @@ package superloader.sandiplayek.com.quickloader.parser;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.view.View;
+import android.widget.Toast;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -78,6 +80,7 @@ public class PostDataParserObjectRequest {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (flag) hidepDialog();
+                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
                 Util.showSnakBar(context,context.getResources().getString(R.string.volley_error));
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
