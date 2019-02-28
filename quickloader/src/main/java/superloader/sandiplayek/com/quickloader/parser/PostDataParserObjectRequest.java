@@ -17,6 +17,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -85,9 +86,16 @@ public class PostDataParserObjectRequest {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (flag) hidepDialog();
-                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_LONG).show();
                 Util.showSnakBar(context,error.getMessage());
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","204");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }){
