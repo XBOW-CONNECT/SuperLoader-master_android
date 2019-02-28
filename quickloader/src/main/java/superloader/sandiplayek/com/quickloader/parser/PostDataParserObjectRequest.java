@@ -80,8 +80,7 @@ public class PostDataParserObjectRequest {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (flag) hidepDialog();
-                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-                Util.showSnakBar(context,context.getResources().getString(R.string.volley_error));
+                Util.showSnakBar(context,error.getMessage());
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
             }
@@ -130,7 +129,7 @@ public class PostDataParserObjectRequest {
             public void onErrorResponse(VolleyError error) {
                 if (flag)
                     hidepDialog();
-                Util.showSnakBar(context,context.getResources().getString(R.string.volley_error),view);
+                Util.showSnakBar(context,error.getMessage(),view);
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
             }
@@ -176,7 +175,7 @@ public class PostDataParserObjectRequest {
             public void onErrorResponse(VolleyError error) {
                 if (flag)
                     hidepDialog();
-                Util.showSnakBar(context,context.getResources().getString(R.string.volley_error));
+                Util.showSnakBar(context,error.getMessage());
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
             }
@@ -226,7 +225,7 @@ public class PostDataParserObjectRequest {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (flag) hidepDialog();
-                Util.showSnakBar(context,context.getResources().getString(R.string.volley_error),v);
+                Util.showSnakBar(context,error.getMessage(),v);
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
             }
@@ -278,7 +277,7 @@ public class PostDataParserObjectRequest {
             public void onErrorResponse(VolleyError error) {
                 if (flag)
                     hidepDialog();
-                Util.showSnakBar(context,context.getResources().getString(R.string.volley_error));
+                Util.showSnakBar(context,error.getMessage());
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
             }
@@ -331,7 +330,7 @@ public class PostDataParserObjectRequest {
             public void onErrorResponse(VolleyError error) {
                 if (flag)
                     hidepDialog();
-                Util.showSnakBar(context,context.getResources().getString(R.string.volley_error),v);
+                Util.showSnakBar(context,error.getMessage(),v);
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
             }
@@ -386,7 +385,7 @@ public class PostDataParserObjectRequest {
             public void onErrorResponse(VolleyError error) {
                 if (flag)
                     hidepDialog();
-                Util.showSnakBar(context,context.getResources().getString(R.string.volley_error));
+                Util.showSnakBar(context,error.getMessage());
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
             }
@@ -435,7 +434,7 @@ public class PostDataParserObjectRequest {
             public void onErrorResponse(VolleyError error) {
                 if (flag)
                     hidepDialog();
-                Util.showSnakBar(context,context.getResources().getString(R.string.volley_error),view);
+                Util.showSnakBar(context,error.getMessage(),view);
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
             }
@@ -481,7 +480,7 @@ public class PostDataParserObjectRequest {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (flag) hidepDialog();
-                Util.showSnakBar(context,context.getResources().getString(R.string.volley_error));
+                Util.showSnakBar(context,error.getMessage());
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
             }
@@ -532,7 +531,7 @@ public class PostDataParserObjectRequest {
             public void onErrorResponse(VolleyError error) {
                 if (flag)
                     hidepDialog();
-                Util.showSnakBar(context,context.getResources().getString(R.string.volley_error),v);
+                Util.showSnakBar(context,error.getMessage(),v);
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
             }
@@ -583,7 +582,7 @@ public class PostDataParserObjectRequest {
             public void onErrorResponse(VolleyError error) {
                 if (flag)
                     hidepDialog();
-                Util.showSnakBar(context,context.getResources().getString(R.string.volley_error));
+                Util.showSnakBar(context,error.getMessage());
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
             }
