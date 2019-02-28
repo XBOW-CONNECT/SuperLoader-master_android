@@ -14,6 +14,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -72,7 +73,15 @@ public class RawDataParserObjectRequestUnCastHM {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
-                listner.onGetObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onGetObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         });
@@ -113,7 +122,15 @@ public class RawDataParserObjectRequestUnCastHM {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),view);
-                listner.onGetObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onGetObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         });
@@ -153,7 +170,15 @@ public class RawDataParserObjectRequestUnCastHM {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),view);
-                listner.onGetObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onGetObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }){
@@ -201,7 +226,15 @@ public class RawDataParserObjectRequestUnCastHM {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
-                listner.onGetObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onGetObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         })
@@ -250,7 +283,15 @@ public class RawDataParserObjectRequestUnCastHM {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
-                listner.onGetObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onGetObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         })
@@ -298,7 +339,15 @@ public class RawDataParserObjectRequestUnCastHM {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
-                listner.onGetObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onGetObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         })
@@ -346,7 +395,15 @@ public class RawDataParserObjectRequestUnCastHM {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
-                listner.onGetObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onGetObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         });
@@ -388,7 +445,15 @@ public class RawDataParserObjectRequestUnCastHM {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),view);
-                listner.onGetObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onGetObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         });
@@ -428,7 +493,15 @@ public class RawDataParserObjectRequestUnCastHM {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),view);
-                listner.onGetObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onGetObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }){
@@ -476,7 +549,15 @@ public class RawDataParserObjectRequestUnCastHM {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
-                listner.onGetObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onGetObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         })
@@ -526,7 +607,15 @@ public class RawDataParserObjectRequestUnCastHM {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
-                listner.onGetObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onGetObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         })
@@ -574,7 +663,15 @@ public class RawDataParserObjectRequestUnCastHM {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
-                listner.onGetObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onGetObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         })

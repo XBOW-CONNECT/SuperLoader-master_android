@@ -14,6 +14,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -58,7 +59,15 @@ public class PostDataParserObjectRequestWithOutDialog {
             public void onErrorResponse(VolleyError error) {
                    
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }){
@@ -98,7 +107,15 @@ public class PostDataParserObjectRequestWithOutDialog {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),view);
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -135,7 +152,15 @@ public class PostDataParserObjectRequestWithOutDialog {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -178,7 +203,15 @@ public class PostDataParserObjectRequestWithOutDialog {
             public void onErrorResponse(VolleyError error) {
                    
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }){
@@ -221,7 +254,15 @@ public class PostDataParserObjectRequestWithOutDialog {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -265,7 +306,15 @@ public class PostDataParserObjectRequestWithOutDialog {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -310,7 +359,15 @@ public class PostDataParserObjectRequestWithOutDialog {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -349,7 +406,15 @@ public class PostDataParserObjectRequestWithOutDialog {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),view);
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -387,7 +452,15 @@ public class PostDataParserObjectRequestWithOutDialog {
             public void onErrorResponse(VolleyError error) {
                    
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -430,7 +503,15 @@ public class PostDataParserObjectRequestWithOutDialog {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -473,7 +554,15 @@ public class PostDataParserObjectRequestWithOutDialog {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror));
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -518,7 +607,15 @@ public class PostDataParserObjectRequestWithOutDialog {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Util.showSnakBar(context,context.getResources().getString(R.string.networkerror),v);
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {

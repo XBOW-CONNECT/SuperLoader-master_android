@@ -90,7 +90,7 @@ public class PostDataParserObjectRequest {
                 JSONObject jsonObject = null;
                 try {
                     jsonObject = new JSONObject();
-                    jsonObject.put("responseCode","204");
+                    jsonObject.put("responseCode","400");
                     jsonObject.put("responseMessage",error.getMessage());
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -144,7 +144,15 @@ public class PostDataParserObjectRequest {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,error.getMessage(),view);
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -190,7 +198,15 @@ public class PostDataParserObjectRequest {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,error.getMessage());
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -240,7 +256,15 @@ public class PostDataParserObjectRequest {
             public void onErrorResponse(VolleyError error) {
                 if (flag) hidepDialog();
                 Util.showSnakBar(context,error.getMessage(),v);
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }){
@@ -292,7 +316,15 @@ public class PostDataParserObjectRequest {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,error.getMessage());
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -345,7 +377,15 @@ public class PostDataParserObjectRequest {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,error.getMessage(),v);
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -400,7 +440,15 @@ public class PostDataParserObjectRequest {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,error.getMessage());
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -449,7 +497,15 @@ public class PostDataParserObjectRequest {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,error.getMessage(),view);
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -495,7 +551,15 @@ public class PostDataParserObjectRequest {
             public void onErrorResponse(VolleyError error) {
                 if (flag) hidepDialog();
                 Util.showSnakBar(context,error.getMessage());
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -546,7 +610,15 @@ public class PostDataParserObjectRequest {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,error.getMessage(),v);
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -597,7 +669,15 @@ public class PostDataParserObjectRequest {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,error.getMessage());
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
@@ -650,7 +730,15 @@ public class PostDataParserObjectRequest {
                 if (flag)
                     hidepDialog();
                 Util.showSnakBar(context,context.getResources().getString(R.string.volley_error),v);
-                listner.onPostObjectResponse(null);
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("responseCode","400");
+                    jsonObject.put("responseMessage",error.getMessage());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                listner.onPostObjectResponse(jsonObject);
                 VolleyLog.d("Error: " + error.getMessage());
             }
         }) {
