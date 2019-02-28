@@ -2,6 +2,7 @@
     <string name="app_name">quickloader</string>
     <string name="internectconnectionerror">Internet connection error</string>
     <string name="networkerror">Network error</string>
+    <string name="volley_error">Request Error</string>
     <string name="timeout">Request Timeout</string>
     <string name="nointernet">Internet Connection Error</string>
     <string name="generic_error">Something Wrong</string>
