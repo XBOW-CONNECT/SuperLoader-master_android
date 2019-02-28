@@ -55,8 +55,6 @@ public class PostDataParserObjectRequest {
     //1 --------------------------------------------------------------------------------------------------------------------
     //Normal WebService Hit
     public PostDataParserObjectRequest(final Context context, String url, final Map<String, String> params, final boolean flag, final OnPostObjectResponseListner listner) {
-        d = new Dialog(context);
-
         if (!Util.isConnected(context)) {
             Util.showSnakBar(context,context.getResources().getString(R.string.internectconnectionerror));
             listner.onPostObjectResponse(null);
@@ -87,8 +85,7 @@ public class PostDataParserObjectRequest {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (flag) hidepDialog();
-                dialog.setTitle(error.getMessage());
-                dialog.show();
+                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_LONG).show();
                 Util.showSnakBar(context,error.getMessage());
                 listner.onPostObjectResponse(null);
                 VolleyLog.d("Error: " + error.getMessage());
