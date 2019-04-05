@@ -22,7 +22,7 @@ import superloader.sandiplayek.com.quickloader.util.Util;
 
 public class FileUpload {
 
-    public int FileUpload(final Context context, final String selectedFilePath, String SERVER_URL, final String user_id_key, final String user_id, final getResponse get_response) {
+    public int FileUpload(final Context context, final String selectedFilePath, final String SERVER_URL, final String user_id_key, final String user_id, final getResponse get_response) {
         int serverResponseCode = 0;
         HttpURLConnection connection;
         DataOutputStream dataOutputStream;
