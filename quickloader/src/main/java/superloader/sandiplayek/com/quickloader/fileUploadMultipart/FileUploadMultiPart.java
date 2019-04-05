@@ -16,13 +16,9 @@ import java.util.HashMap;
 
 import superloader.sandiplayek.com.quickloader.util.Util;
 
-/**
- * Created by Android on 06-09-2017.
- */
+public class FileUploadMultiPart {
 
-public class FileUpload {
-
-    public int FileUpload(final Context context, final String selectedFilePath, final String SERVER_URL, final String user_id_key, final String user_id, final getResponse get_response) {
+    public FileUploadMultiPart(final Context context, final String selectedFilePath, final String SERVER_URL, final String user_id_key, final String user_id, final getResponse get_response) {
         int serverResponseCode = 0;
         HttpURLConnection connection;
         DataOutputStream dataOutputStream;
@@ -43,10 +39,8 @@ public class FileUpload {
                     HashMap<String, String> params = new HashMap<>();
                     params=null;
                     get_response.onResponse("Source File Doesn't Exist",params);
-                    //tvFileName.setText("Source File Doesn't Exist: " + selectedFilePath);
                 }
             });
-            return 0;
         } else {
             try {
                 FileInputStream fileInputStream = new FileInputStream(selectedFile);
@@ -60,7 +54,6 @@ public class FileUpload {
                 connection.setRequestProperty("ENCTYPE", "multipart/form-data");
                 connection.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
                 connection.setRequestProperty("uploaded_file", selectedFilePath);
-                // connection.setRequestProperty("user_id","4");
 
                 //creating new dataoutputstream
                 dataOutputStream = new DataOutputStream(connection.getOutputStream());
@@ -95,31 +88,20 @@ public class FileUpload {
 
                 serverResponseCode = connection.getResponseCode();
                 String serverResponseMessage = connection.getResponseMessage();
-                //Log.i(TAG, "Server Response is: " + serverResponseMessage + ": " + serverResponseCode);
-                //response code of 200 indicates the server status OK
                 if (serverResponseCode == 200) {
                     ((Activity) context).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            //Toast.makeText(Edit_Profile.this, "FileUpload Success", Toast.LENGTH_SHORT).show();
                             if (Util.isConnected(context)) {
                                 HashMap<String, String> params = new HashMap<>();
                                 params.put(user_id_key, user_id);
                                 get_response.onResponse("OK",params);
-                                //getUserProfileDetails(params);
                             } else {
-                                /*if (currentapiVersion >= Build.VERSION_CODES.LOLLIPOP) {*/
                                 Toast.makeText(context, "Internet Connection Unavailable", Toast.LENGTH_SHORT).show();
                                 HashMap<String, String> params = new HashMap<>();
                                 params=null;
                                 get_response.onResponse("Internet Error",params);
-                                /*}
-                                else{
-                                    Toast.makeText(getApplicationContext(),"Internet connection unavailable.", Toast.LENGTH_LONG).show();
-                                }*/
-
                             }
-                            //tvFileName.setText("File Upload completed.\n\n You can see the uploaded file here: \n\n" + "http://coderefer.com/extras/uploads/"+ fileName);
                         }
                     });
                 }
@@ -132,45 +114,25 @@ public class FileUpload {
                 ((Activity) context).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        /*if (currentapiVersion >= Build.VERSION_CODES.LOLLIPOP) {*/
                         HashMap<String, String> params = new HashMap<>();
                         params=null;
                         get_response.onResponse("File Not Found",params);
                         Toast.makeText(context, "File Not Found", Toast.LENGTH_SHORT).show();
-
-                        /*}
-                        else{
-                            Toast.makeText(getApplicationContext(),"File Not Found", Toast.LENGTH_LONG).show();
-                        }*/
                     }
                 });
             } catch (MalformedURLException e) {
                 e.printStackTrace();
-                /*if (currentapiVersion >= Build.VERSION_CODES.LOLLIPOP) {*/
                 HashMap<String, String> params = new HashMap<>();
                 params=null;
                 get_response.onResponse("URL ERROR",params);
                 Toast.makeText(context, "URL ERROR", Toast.LENGTH_SHORT).show();
-                /*}
-                else{
-                    Toast.makeText(getApplicationContext(),"URL error!", Toast.LENGTH_LONG).show();
-                }*/
             } catch (IOException e) {
                 e.printStackTrace();
-                /*if (currentapiVersion >= Build.VERSION_CODES.LOLLIPOP) {*/
                 HashMap<String, String> params = new HashMap<>();
                 params=null;
                 get_response.onResponse("Cannot Read/Write File",params);
                 Toast.makeText(context, "Cannot Read/Write File", Toast.LENGTH_SHORT).show();
-                /*}
-                else{
-                    Toast.makeText(getApplicationContext(),"Cannot Read/Write File!", Toast.LENGTH_LONG).show();
-                }*/
             }
-            //dialogg.dismiss();
-            //dialog1.dismiss();
-            //hidepDialog();
-            return serverResponseCode;
         }
     }
 
