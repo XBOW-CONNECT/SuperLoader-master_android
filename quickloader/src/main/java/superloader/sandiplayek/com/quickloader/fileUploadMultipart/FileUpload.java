@@ -20,8 +20,9 @@ import superloader.sandiplayek.com.quickloader.util.Util;
  * Created by Android on 06-09-2017.
  */
 
-public class fileUpload {
-    public int fileUpload(final Context context, final String selectedFilePath, String SERVER_URL, final String user_id_key, final String user_id, final getResponse get_response) {
+public class FileUpload {
+
+    public int FileUpload(final Context context, final String selectedFilePath, String SERVER_URL, final String user_id_key, final String user_id, final getResponse get_response) {
         int serverResponseCode = 0;
         HttpURLConnection connection;
         DataOutputStream dataOutputStream;
