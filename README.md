@@ -24,7 +24,7 @@ AND
 
 ```sh
 dependencies {
-    compile 'com.github.SandipLayek27:SuperLoader-master_android:4.5'
+    compile 'com.github.SandipLayek27:SuperLoader-master_android:4.6'
 }
 ```
 
@@ -364,17 +364,19 @@ Util.showSnakBar(MainActivity.this,"Hello");
     iserId => value
     source => android
     String url="Image Upload URL"+"user_id="+userId+"&source="+"android";       //Upload image webservice
-    new FileUpload(MainActivityTwo.this, selectedFilePath, url, "user_id", AppData.sUserId, new FileUpload.getResponse() {
-        @Override
-        public void onResponse(String response_text, HashMap<String, String> hashMap) {
-        if(response_text.equals("OK")){
-              //call another method which can view update image view using webservice
-              getUserProfileDetails(hashMap);
-        }else{
-              Toast.makeText(MainActivityTwo.this, ""+response_text, Toast.LENGTH_SHORT).show();
-        }
-      }
-    });
+    private void fileUploadSection() {
+        new FileUploadMultiPart(MainActivity.this,"","","","", new FileUploadMultiPart.getResponse() {
+            @Override
+            public void onResponse(String response_text, HashMap<String, String> hashMap) {
+                if(response_text.equals("OK")){
+                      //call another method which can view update image view using webservice
+                      getUserProfileDetails(hashMap);
+                }else{
+                      Toast.makeText(MainActivityTwo.this, ""+response_text, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+   }
 ```
 * 22. Image Fetch and set ImageView
 ```sh
