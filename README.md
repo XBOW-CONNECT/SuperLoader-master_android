@@ -27,6 +27,30 @@ dependencies {
     compile 'com.github.SandipLayek27:SuperLoader-master_android:4.6'
 }
 ```
+# ★ Use this to manifest.
+```sh
+<application  ....
+        android:stateNotNeeded="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+>
+<uses-library android:name="org.apache.http.legacy" android:required="false"/>
+<activity ......>
+```
+# ★ network_security_confi.
+```sh
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">domain.com</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+            <!--<certificates src="@raw/debug_certificate" />-->
+        </trust-anchors>
+    </domain-config>
+</network-security-config>
+```
 
 # ★ Features are
 1. JSONObject request (Parameterized) with or without header passing.   [GET Method/POST Method] [Multiple header passing]
