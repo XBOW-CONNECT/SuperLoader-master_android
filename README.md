@@ -24,7 +24,7 @@ AND
 
 ```sh
 dependencies {
-    compile 'com.github.SandipLayek27:SuperLoader-master_android:4.6'
+    compile 'com.github.SandipLayek27:SuperLoader-master_android:4.7'
 }
 ```
 # ★ Use this to manifest.
