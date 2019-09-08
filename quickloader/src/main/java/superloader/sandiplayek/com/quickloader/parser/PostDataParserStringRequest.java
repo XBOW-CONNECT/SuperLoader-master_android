@@ -90,6 +90,7 @@ public class PostDataParserStringRequest {
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         //AppController.getInstance().addToRequestQueue(postRequest);
         RequestQueue queue = Volley.newRequestQueue(context);
+        postRequest.setShouldCache(false);
         queue.add(postRequest);
     }
 
@@ -137,6 +138,7 @@ public class PostDataParserStringRequest {
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        postRequest.setShouldCache(false);
         queue.add(postRequest);
     }
     //3 --------------------------------------------------------------------------------------------------------------------
@@ -186,6 +188,7 @@ public class PostDataParserStringRequest {
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT ));
         RequestQueue queue = Volley.newRequestQueue(context);
+        postRequest.setShouldCache(false);
         queue.add(postRequest);
     }
 
@@ -238,6 +241,7 @@ public class PostDataParserStringRequest {
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        postRequest.setShouldCache(false);
         queue.add(postRequest);
     }
     //5 --------------------------------------------------------------------------------------------------------------------
@@ -291,6 +295,7 @@ public class PostDataParserStringRequest {
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        postRequest.setShouldCache(false);
         queue.add(postRequest);
     }
 
@@ -345,6 +350,7 @@ public class PostDataParserStringRequest {
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        postRequest.setShouldCache(false);
         queue.add(postRequest);
     }
 
@@ -392,6 +398,7 @@ public class PostDataParserStringRequest {
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        postRequest.setShouldCache(false);
         queue.add(postRequest);
     }
 
@@ -439,6 +446,7 @@ public class PostDataParserStringRequest {
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        postRequest.setShouldCache(false);
         queue.add(postRequest);
     }
 
@@ -491,6 +499,7 @@ public class PostDataParserStringRequest {
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        postRequest.setShouldCache(false);
         queue.add(postRequest);
     }
 
@@ -543,6 +552,7 @@ public class PostDataParserStringRequest {
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        postRequest.setShouldCache(false);
         queue.add(postRequest);
     }
     //5.5 --------------------------------------------------------------------------------------------------------------------
@@ -596,6 +606,7 @@ public class PostDataParserStringRequest {
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        postRequest.setShouldCache(false);
         queue.add(postRequest);
     }
 
@@ -650,6 +661,7 @@ public class PostDataParserStringRequest {
         };
         postRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        postRequest.setShouldCache(false);
         queue.add(postRequest);
     }
 
