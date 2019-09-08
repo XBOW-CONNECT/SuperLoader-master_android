@@ -83,6 +83,7 @@ public class GetDataParserArrayRequest {
         });
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonArrayRequest.setShouldCache(false);
         queue.add(jsonArrayRequest);
     }
 
@@ -125,6 +126,7 @@ public class GetDataParserArrayRequest {
         });
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonArrayRequest.setShouldCache(false);
         queue.add(jsonArrayRequest);
     }
 
@@ -176,6 +178,7 @@ public class GetDataParserArrayRequest {
         };
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonArrayRequest.setShouldCache(false);
         queue.add(jsonArrayRequest);
     }
 
@@ -228,6 +231,7 @@ public class GetDataParserArrayRequest {
         };
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonArrayRequest.setShouldCache(false);
         queue.add(jsonArrayRequest);
     }
     //5 ---------------------------------------------------------------------------------
@@ -274,6 +278,7 @@ public class GetDataParserArrayRequest {
         };
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonArrayRequest.setShouldCache(false);
         queue.add(jsonArrayRequest);
     }
 
@@ -316,6 +321,7 @@ public class GetDataParserArrayRequest {
         });
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonArrayRequest.setShouldCache(false);
         queue.add(jsonArrayRequest);
     }
 
@@ -358,6 +364,7 @@ public class GetDataParserArrayRequest {
         });
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonArrayRequest.setShouldCache(false);
         queue.add(jsonArrayRequest);
     }
 
@@ -409,6 +416,7 @@ public class GetDataParserArrayRequest {
         };
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonArrayRequest.setShouldCache(false);
         queue.add(jsonArrayRequest);
     }
 
@@ -461,6 +469,7 @@ public class GetDataParserArrayRequest {
         };
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonArrayRequest.setShouldCache(false);
         queue.add(jsonArrayRequest);
     }
 
@@ -508,6 +517,7 @@ public class GetDataParserArrayRequest {
         };
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonArrayRequest.setShouldCache(false);
         queue.add(jsonArrayRequest);
     }
 
