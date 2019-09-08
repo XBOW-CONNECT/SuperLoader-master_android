@@ -91,6 +91,7 @@ public class GetDataParserObjectRequest {
         });
         jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonObjReq.setShouldCache(false);
         queue.add(jsonObjReq);
     }
     //2 ................................................................................................................
@@ -140,6 +141,7 @@ public class GetDataParserObjectRequest {
         });
         jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonObjReq.setShouldCache(false);
         queue.add(jsonObjReq);
     }
     //3 ...............................................................................................................
@@ -195,6 +197,7 @@ public class GetDataParserObjectRequest {
         };
         jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonObjReq.setShouldCache(false);
         queue.add(jsonObjReq);
     }
     //4 ................................................................................................................
@@ -252,6 +255,7 @@ public class GetDataParserObjectRequest {
         };
         jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonObjReq.setShouldCache(false);
         queue.add(jsonObjReq);
     }
     //5 ................................................................................................................
@@ -308,6 +312,7 @@ public class GetDataParserObjectRequest {
         };
         jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonObjReq.setShouldCache(false);
         queue.add(jsonObjReq);
     }
     //1.1 ................................................................................................................
@@ -358,6 +363,7 @@ public class GetDataParserObjectRequest {
         });
         jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonObjReq.setShouldCache(false);
         queue.add(jsonObjReq);
     }
 
@@ -408,6 +414,7 @@ public class GetDataParserObjectRequest {
         });
         jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonObjReq.setShouldCache(false);
         queue.add(jsonObjReq);
     }
     //3.3 ...............................................................................................................
@@ -463,6 +470,7 @@ public class GetDataParserObjectRequest {
         };
         jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonObjReq.setShouldCache(false);
         queue.add(jsonObjReq);
     }
     //4.4 ................................................................................................................
@@ -520,6 +528,7 @@ public class GetDataParserObjectRequest {
         };
         jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonObjReq.setShouldCache(false);
         queue.add(jsonObjReq);
     }
     //5.5 ................................................................................................................
@@ -575,6 +584,7 @@ public class GetDataParserObjectRequest {
         };
         jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);
+        jsonObjReq.setShouldCache(false);
         queue.add(jsonObjReq);
     }
 
